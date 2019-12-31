@@ -1,0 +1,222 @@
+@CHARSET "UTF-8";
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+#page::-webkit-scrollbar {
+	display: none;
+}
+
+#boxV::-webkit-scrollbar {
+	display: none;
+}
+
+/* myPage */
+#page {
+	padding-top: 1px;
+	width: 360dp;
+	overflow: auto;
+	background: silver;
+	margin-top: 40px;
+}
+
+#title {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 360px;
+	height: 40px;
+}
+
+#titleTXT {
+	float: left;
+	padding-top: 10px;
+	padding-left: 120px;
+}
+
+#logo {
+	float: left;
+}
+
+#info {
+	height: 70px;
+	background: white;
+	margin-bottom: 1px;
+	padding: 5px;
+}
+
+#info small {
+	margin-left: 10px;
+}
+
+.enter {
+	color: gray;
+	float: right;
+	padding-top: 20px;
+}
+
+.boxN {
+	width: 33%;
+	height: 50px;
+	padding: 8px;
+	text-align: center;
+	background: white;
+	float: left;
+}
+
+.boxN:nth-child(2) {
+	margin: 0px 1.5px 0px 1.5px;
+}
+
+#contentMY {
+	margin-top: 52px;
+}
+
+#boxV {
+	height: 160px;
+	background: white;
+	margin-bottom: 1px;
+	overflow: scroll;
+}
+
+.boxR {
+	clear: both;
+}
+
+.fontR {
+	background: white;
+	padding: 5px;
+	margin-bottom: 1px;
+}
+
+.boxM {
+	height: 50px;
+	background: white;
+	margin-bottom: 1px;
+}
+
+.boxM .enter {
+	padding-top: 16px;
+}
+
+.fontM {
+	float: left;
+	padding-top: 16px;
+	padding-left: 5px;
+}
+
+/* mypage content */
+.boxB {
+	height: 90px;
+	background: white;
+	margin-bottom: 1px;
+	padding-top: 5px;
+	clear: both;
+}
+
+.imgBoxR {
+	width: 55px;
+	margin-left: 5px;
+	float: left;
+}
+
+.imgBoxR p {
+	font-size: 0.5rem;
+	text-align: center;
+}
+
+.rContentR p {
+	font-size: 0.9375rem;
+}
+
+.rContentR {
+	width: 260px;
+	float: left;
+	margin-left: 10px;
+}
+
+#contentU {
+	height: 559px;
+}
+
+.imgB {
+	padding: 5px;
+	float: left;
+}
+
+.txtB {
+	padding-top: 4px;
+	float: left;
+}
+
+#removeB {
+	padding: 5px;
+	float: right;
+}
+
+#TXT {
+	padding-top: 300px;
+	text-align: center;
+}
+
+/* userDrop */
+#termsDR {
+	margin: 1px 0px;
+	height: 60%;
+	background: white;
+}
+
+#agreeDR {
+	margin-bottom: 1px;
+	background: white;
+	text-align: center;
+	height: 22px;
+}
+
+#drL {
+	width: 49.5%;
+	float: left;
+	background: white;
+}
+
+#drR {
+	width: 49.5%;
+	float: right;
+	background: white;
+}
+
+#dropPW {
+	clear: both;
+	margin: 1px 0px;
+	background: white;
+	text-align: center;
+}
+
+#dropBtn {
+	text-align: center;
+	background: white;
+}
+
+/* ceoMypage */
+.boxNC {
+	width: 49.6%;
+	height: 50px;
+	padding: 8px;
+	text-align: center;
+	background: white;
+	float: left;
+}
+
+.boxNC:FIRST-CHILD {
+	margin-right: 1px;
+}
+
+/* storeService */
+#storeUpdate {
+	
+}
+
+.boxS {
+	
+}

@@ -44,23 +44,26 @@ body::-webkit-scrollbar {
 /* main */
 #page {
 	margin-top: 40px;
-	width: 360px;
-	height: 600px;
+	width: 100%;
 	background-image: url("main/bg1.png");
-	overflow: auto;
+	min-height: 100%;
+	background-position: center;
+	background-size: cover;
+	overflow: hidden;
 }
 
 #header {
-	width: 360px;
+	width: 100%;
 }
 
 #menu {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 360px;
+	width: 100%;
 	height: 40px;
 	background: brown;
+	z-index: 5;
 }
 
 #logo {
@@ -69,17 +72,17 @@ body::-webkit-scrollbar {
 
 #login {
 	float: right;
+	font-size: 1.8rem;
 }
 
 #title {
-	width: 360px;
-	height: 70px;
+	width: 100%;
 }
 
 /* 10개 하나는 더보기 */
 #nav {
 	background: #e6a631;
-	width: 360px;
+	width: 100%;
 	height: 110px;
 	border-top: 1px solid rgba(150, 75, 0, .1);
 	overflow: auto;
@@ -91,7 +94,7 @@ body::-webkit-scrollbar {
 }
 
 #navF p {
-	font-size: 8px;
+	font-size: 1rem;
 }
 
 .favor {
@@ -102,8 +105,10 @@ body::-webkit-scrollbar {
 }
 
 #content {
-	width: 360px;
-	height: 430px;
+	position: relative;
+	left: 50%;
+	margin-left: -180px;
+	width: 100%;
 	border-top: 1px solid rgba(150, 75, 0, .2);
 }
 
@@ -114,29 +119,37 @@ body::-webkit-scrollbar {
 	margin: 10px;
 }
 
-#inputbox input {
+#inputbox {
+	float: left;
+}
+
+#keyword {
+	width: 150px;
 	background-image: url(main/searchIcon.png);
 	background-position: 5px center;
 	background-repeat: no-repeat;
 	padding-left: 30px;
 	outline: none;
+	background-image: url(main/searchIcon.png);
 }
 
 /* search */
 #searchInfo {
-	width: 360px;
+	width: 100%;
 	height: 30px;
 	padding: 5px;
 	font-family: 'Cafe24Simplehae';
 }
 
 #searchInfo span {
-	font-size: 10px;
+	font-size: 1.25rem;
 }
 
 #search {
-	width: 360px;
-	height: 560px;
+	position: relative;
+	left: 50%;
+	margin-left: -180px;
+	width: 100%;
 	border-top: 1px solid rgba(150, 75, 0, .2);
 }
 
@@ -145,8 +158,8 @@ body::-webkit-scrollbar {
 	top: 40px;
 	left: 0px;
 	right: 0px;
-	height: 640px;
-	width: 360px;
+	height: 100%;
+	width: 100%;
 	background: rgba(0, 0, 0, 0.5);
 	z-index: 1000;
 	overflow-x: hidden;
@@ -155,7 +168,7 @@ body::-webkit-scrollbar {
 
 #lBox {
 	width: 320px;
-	height: 600px;
+	height: 100%;
 	margin: 20px auto;
 	padding: 10px;
 	border: 1px solid #333333;
@@ -167,6 +180,7 @@ body::-webkit-scrollbar {
 	font-family: 'Tmon몬소리';
 	overflow: scroll;
 	border: 1px solid #333333;
+	padding-bottom: 80px;
 }
 
 #sort1 {
@@ -196,8 +210,9 @@ body::-webkit-scrollbar {
 
 #btnS {
 	position: fixed;
-	left: 21px;
-	bottom: 0px;
+	left: 50%;
+	bottom: 0;
+	margin-left: -159px;
 }
 
 #btnClose {
@@ -210,7 +225,10 @@ body::-webkit-scrollbar {
 
 /* read */
 #contentR {
-	width: 360px;
+	position: relative;
+	left: 50%;
+	margin-left: -180px;
+	width: 100%;
 	height: 600px;
 	padding: 10px;
 }
@@ -242,7 +260,7 @@ body::-webkit-scrollbar {
 	margin-top: 28px;
 	text-align: center;
 	font-family: 'Tmon몬소리';
-	font-size: 20px;
+	font-size: 2.5rem;
 }
 
 #storeInfo {
@@ -252,7 +270,7 @@ body::-webkit-scrollbar {
 }
 
 #storeName {
-	font-size: 35px;
+	font-size: 4rem;
 	color: brown;
 }
 
@@ -271,6 +289,10 @@ body::-webkit-scrollbar {
 	height: 180px;
 }
 
+#help {
+	font-size: 0.5rem;
+}
+
 /* read2 */
 #storeReview {
 	
@@ -283,6 +305,7 @@ body::-webkit-scrollbar {
 	margin-bottom: 7px;
 	border-radius: 5px;
 	border: 1px solid rgba(150, 75, 0, .1);
+	clear: both;
 }
 
 #imgBoxR {
@@ -298,20 +321,22 @@ body::-webkit-scrollbar {
 }
 
 #imgBoxR p {
-	font-size: 8px;
+	font-size: 0.3rem;
+	line-height: 1rem;
 	text-align: center;
 }
 
 #rContentR p {
-	font-size: 15px;
+	font-size: 1.5rem;
 }
 
 #rContentR small {
-	font-size: 8px;
+	font-size: 0.5rem;
 	color: gray;
 }
 
 #moreR {
+	width: 340px;
 	text-align: center;
 	background: rgba(150, 75, 0, .3);
 	border-radius: 5px;
@@ -324,11 +349,11 @@ body::-webkit-scrollbar {
 
 #storeBlog tr {
 	border-bottom: 1px solid rgba(150, 75, 0, .3);
-	font-size: 13px;
+	font-size: 0.8125rem;
 }
 
 #storeBlog tr small {
-	font-size: 10px;
+	font-size: 0.625rem;
 	color: rgba(0, 0, 0, .5);
 }
 
@@ -354,11 +379,11 @@ body::-webkit-scrollbar {
 
 #storeRecom tr {
 	border-bottom: 1px solid rgba(150, 75, 0, .3);
-	font-size: 13px;
+	font-size: 0.8125rem;
 }
 
 #storeRecom tr small {
-	font-size: 10px;
+	font-size: 0.625rem;
 	color: rgba(0, 0, 0, .5);
 }
 
@@ -366,14 +391,17 @@ body::-webkit-scrollbar {
 #footerR {
 	position: fixed;
 	bottom: 0px;
-	width: 360px;
+	width: 100%;
 	padding: 8px;
 	height: 35px;
 	background: gray;
 }
 
 #btnR {
-	
+	position: relative;
+	left: 50%;
+	margin-left: -170px;
+	width: 100%;
 }
 
 .btnBoxR {
@@ -401,7 +429,7 @@ body::-webkit-scrollbar {
 	left: 0px;
 	right: 0px;
 	height: 640px;
-	width: 360px;
+	width: 100%;
 	background: rgba(0, 0, 0, .8);
 	z-index: 1000;
 	overflow-x: hidden;
@@ -409,20 +437,20 @@ body::-webkit-scrollbar {
 }
 
 #dBox {
-	width: 360px;
+	width: 100%;
 	height: 45px;
 	background: black;
 }
 
 #nameB {
-	font-size: 20px;
+	font-size: 1.25rem;
 	color: white;
 	float: left;
 	padding: 8px;
 }
 
 #close #x {
-	font-size: 30px;
+	font-size: 1.875rem;
 	float: right;
 	color: white;
 	margin-right: 8px;
@@ -451,11 +479,12 @@ body::-webkit-scrollbar {
 /* RV */
 #contentRV {
 	padding: 10px;
+	height: 600px;
 }
 
 #menuInfo {
 	background: white;
-	width: 340px;
+	width: 100%;
 	height: 360px;
 	box-shadow: 5px 5px 5px;
 }
@@ -479,44 +508,45 @@ body::-webkit-scrollbar {
 }
 
 #chk {
-	padding-left: 2px; width : 15px;
+	padding-left: 2px;
+	width: 15px;
 	float: left;
 	background: #fff;
 	width: 15px;
 }
 
 #menuInfo .l-txt {
-	font-size: 12px;
+	font-size: 1.2rem;
 	background: #fff;
 	float: left;
 }
 
 #menuInfo .r-txt {
 	padding-right: 5px;
-	font-size: 12px;
+	font-size: 1.2rem;
 	background: #fff;
 	float: right;
 }
 
 #timeRV {
 	margin-top: 10px;
-	width: 340px;
+	width: 100%;
 	height: 33px;
 	box-shadow: 5px 5px 5px;
 	background: #fff;
 	text-align: right;
-	padding-right:5px;
-	padding-top: 5px; 
+	padding-right: 5px;
+	padding-top: 5px;
 }
 
-#timeRV b{
+#timeRV b {
 	float: left;
-	padding-left:5px; 
+	padding-left: 5px;
 }
 
-#requestRV{
+#requestRV {
 	margin-top: 10px;
-	width: 340px;
+	width: 100%;
 	height: 90px;
 	box-shadow: 5px 5px 5px;
 	background: #fff;

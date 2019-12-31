@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="../resources/hon.css">
 <!--  css -->
 </head>
-<body>
+<body onLoad="Popup('nanumi');">
 	<div id="page">
 		<div id="header">
 			<jsp:include page="../menu.jsp"></jsp:include>
@@ -72,6 +72,7 @@
 	<jsp:include page="dPage.jsp"></jsp:include>
 </body>
 <script>
+	// 마우스 스크롤 이벤트
 	$("#contentR").on('mousewheel DOMMouseScroll', function(e) {
 		// html, body 에 마우스 휠 이벤트와 돔마우스스크롤 이벤트를 걸었습니다.
 		var E = e.originalEvent;
@@ -97,6 +98,20 @@
 		}
 	});
 
+	// 터치 스크롤 이벤트
+	var startX, startY, endX, endY;
+	$("#page").on('touchstart', function(event) {
+		startX = event.originalEvent.changedTouches[0].screenX;
+		startY = event.originalEvent.changedTouches[0].screenY;
+	});
+	$("#page").on('touchend', function(event) {
+		endX = event.originalEvent.changedTouches[0].screenX;
+		endY = event.originalEvent.changedTouches[0].screenY;
+		if (startY - endY > 50) {
+			location.href = "read2";
+		}
+	});
+
 	$("#storeImg").on("click", function() {
 		$("#dPage").show();
 	});
@@ -105,9 +120,111 @@
 		e.stopPropagation();
 		alert("메뉴");
 	});
-	
-	$("#btnRV").on("click",function(){
-		location.href="RV";
+
+	$("#btnRV").on("click", function() {
+		location.href = "RV";
 	});
+</script>
+<!-- 팝업 -->
+<script language="JavaScript">
+	function Cookie(document, name, hours, path, domain, secure) {
+		this.$document = document;
+		this.$name = name;
+		if (hours)
+			this.$expiration = new Date((new Date()).getTime() + hours
+					* 3600000);
+		else
+			this.$expiration = null;
+		if (path)
+			this.$path = path;
+		else
+			this.$path = null;
+		if (domain)
+			this.$domain = domain;
+		else
+			this.$domain = null;
+		if (secure)
+			this.$secure = true;
+		else
+			this.$secure = false;
+	}
+
+	function _Cookie_store() {
+		var cookieval = "";
+		for ( var prop in this) {
+
+			if ((prop.charAt(0) == '$') || ((typeof this[prop]) == 'function'))
+				continue;
+			if (cookieval != "")
+				cookieval += '&';
+			cookieval += prop + ':' + escape(this[prop]);
+		}
+
+		var cookie = this.$name + '=' + cookieval;
+		if (this.$expiration)
+			cookie += '; expires=' + this.$expiration.toGMTString();
+		if (this.$path)
+			cookie += '; path=' + this.$path;
+		if (this.$domain)
+			cookie += '; domain=' + this.$domain;
+		if (this.$secure)
+			cookie += '; secure';
+
+		this.$document.cookie = cookie;
+	}
+
+	function _Cookie_load() {
+		var allcookies = this.$document.cookie;
+		if (allcookies == "")
+			return false;
+
+		var start = allcookies.indexOf(this.$name + '=');
+		if (start == -1)
+			return false;
+		start += this.$name.length + 1;
+		var end = allcookies.indexOf(';', start);
+		if (end == -1)
+			end = allcookies.length;
+		var cookieval = allcookies.substring(start, end);
+
+		var a = cookieval.split('&');
+		for (var i = 0; i < a.length; i++)
+			a[i] = a[i].split(':');
+
+		for (var i = 0; i < a.length; i++) {
+			this[a[i][0]] = unescape(a[i][1]);
+		}
+		return true;
+	}
+
+	function _Cookie_remove() {
+		var cookie;
+		cookie = this.$name + '=';
+		if (this.$path)
+			cookie += '; path=' + this.$path;
+		if (this.$domain)
+			cookie += '; domain=' + this.$domain;
+		cookie += '; expires=Fri, 31-Jan-2001 00:00:00 GMT';
+
+		this.$document.cookie = cookie;
+	}
+
+	new Cookie();
+	Cookie.prototype.store = _Cookie_store;
+	Cookie.prototype.load = _Cookie_load;
+	Cookie.prototype.remove = _Cookie_remove;
+
+	function Popup(site) {
+		var exp = 8760;
+		var page = "help";
+		var windowprops = "width=300,height=300,location=no,toolbar=no,menubar=no,scrollbars=no";
+		var temp = new Cookie(document, "nanumi", exp);
+
+		if (!temp.load()) {
+			temp.firstload = site;
+			temp.store();
+			subwin = window.open(page, "", windowprops);
+		}
+	}
 </script>
 </html>

@@ -31,6 +31,11 @@ public class HonController {
 	public String mRead() {
 		return "main/read/read";
 	}
+	
+	@RequestMapping("help")
+	public String mHelp() {
+		return "main/read/help";
+	}
 
 	@RequestMapping("read2")
 	public String mRead2() {

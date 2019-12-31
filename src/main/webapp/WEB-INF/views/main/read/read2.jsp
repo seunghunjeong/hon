@@ -98,11 +98,26 @@
 		}
 	});
 
-	$("#storeReview").on('mousewheel DOMMouseScroll', function(e) {
-		//상위로 이벤트가 전파되지 않도록 중단한다.
-		e.stopPropagation();
+	// 터치 스크롤 이벤트
+	var startX, startY, endX, endY;
+	$("#page").on('touchstart', function(event) {
+		startX = event.originalEvent.changedTouches[0].screenX;
+		startY = event.originalEvent.changedTouches[0].screenY;
 	});
-	
+	$("#page").on('touchend', function(event) {
+		endX = event.originalEvent.changedTouches[0].screenX;
+		endY = event.originalEvent.changedTouches[0].screenY;
+		if (endY - startY > 50) {
+			location.href = "read";
+		}
+	});
+
+	$("#moreR").on("click", function() {
+		$("#storeReview").on('mousewheel DOMMouseScroll', function(e) {
+			//상위로 이벤트가 전파되지 않도록 중단한다.
+			e.stopPropagation();
+		});
+	});
 	$("#btnRV").on("click", function() {
 		location.href = "RV";
 	});

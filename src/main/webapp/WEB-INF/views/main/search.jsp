@@ -22,7 +22,8 @@
 				???? 검색결과
 				<button id="btnFilter" type="button" class="btn btn-default btn-xs"
 					style="float: right">
-					<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span><b> 필터</b>
+					<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span><b>
+						필터</b>
 				</button>
 			</div>
 		</div>
@@ -199,17 +200,32 @@
 	// 필터창
 	$("#btnFilter").on("click", function() {
 		$("#dBack").show();
+		$("#page").bind('touchmove', function(e) {
+			e.preventDefault()
+		});
+		
+		$("#lBox").bind('touchmove', function(e) {
+			e.stopPropagation();
+			$("body").css('overflow','hidden');
+			$("#dBack").css('overflow','hidden');
+		});
 	});
 
 	// 닫기
 	$("#btnClose").on("click", function() {
 		$("#dBack").hide();
+		$("#page").unbind('touchmove');
+		$("body").css('overflow','auto');
+		$("#dBack").css('overflow','auto');
 	});
 
 	// 어두운 부분 클릭하면 닫기
 	$('#dBack').click(function(e) {
 		if ($(e.target).hasClass("bbox")) {
 			$("#dBack").hide();
+			$("#page").unbind('touchmove');
+			$("body").css('overflow','auto');
+			$("#dBack").css('overflow','auto');
 		}
 	});
 </script>

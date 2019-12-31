@@ -11,10 +11,10 @@
 	<div id="menu">
 		<a href="mainPage"><img id="logo"
 			src="../resources/main/logo2.png" width=40></a>
-		<div style="width: 20px; float: left;">&nbsp;</div>
+		<div style="width: 6%; float: left;">&nbsp;</div>
 
-		<div id="inputbox" class="input-group" style="float: left;">
-			<input type="text" class="form-control" style="width: 150px">
+		<div id="inputbox" class="input-group">
+			<input type="text" id="keyword" class="form-control">
 			<span class="input-group-btn" style="float: left;">
 				<button id="btnSearch" class="btn btn-default" type="button">검색</button>
 			</span>

@@ -23,7 +23,7 @@
 			<jsp:include page="menu.jsp"></jsp:include>
 			<!-- 메뉴 -->
 			<div id="title">
-				<img src="../resources/main/title.PNG">
+				<img src="../resources/main/title.PNG" width="100%">
 			</div>
 		</div>
 		<jsp:include page="nav.jsp"></jsp:include>
