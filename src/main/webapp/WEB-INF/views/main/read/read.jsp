@@ -11,7 +11,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!--  bootstrap -->
-<link rel="stylesheet" href="../resources/hon.css">
+<link rel="stylesheet" href="resources/hon.css">
 <!--  css -->
 </head>
 <body onLoad="Popup('nanumi');">
@@ -23,10 +23,10 @@
 		<!-- header -->
 		<div id="contentR">
 			<div id="storeImg">
-				<img src="../resources/main/read/gobe1.jpg"> <img
-					src="../resources/main/read/gobe2.jpg"> <img
-					src="../resources/main/read/gobe3.jpg"> <img
-					src="../resources/main/read/gobe4.jpg">
+				<img src="resources/main/read/gobe1.jpg"> <img
+					src="resources/main/read/gobe2.jpg"> <img
+					src="resources/main/read/gobe3.jpg"> <img
+					src="resources/main/read/gobe4.jpg">
 				<div id="imgMenu">
 					<div id="menuTXT">메뉴</div>
 				</div>

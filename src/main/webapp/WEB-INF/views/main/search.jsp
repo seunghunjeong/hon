@@ -10,7 +10,7 @@
 <title>?? 검색 결과</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="../resources/hon.css">
+<link rel="stylesheet" href="resources/hon.css">
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
@@ -160,32 +160,32 @@
 		<div id="dBack" class="bbox">
 			<div id="lBox">
 				<div id="sort1">
-					<img src="../resources/main/search/snowmanTXT.png" width="40px" />
+					<img src="resources/main/search/snowmanTXT.png" width="40px" />
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img
-						src="../resources/main/search/ageTXT.png" width="40px" />
+						src="resources/main/search/ageTXT.png" width="40px" />
 				</div>
 				<div id="sort2">
-					지역별 <img src="../resources/main/search/임시.png" width="280px"
+					지역별 <img src="resources/main/search/임시.png" width="280px"
 						height="100px">
 				</div>
 				<div id="sort3">
-					가격별 <br> <img src="../resources/main/search/price/0.png"
+					가격별 <br> <img src="resources/main/search/price/0.png"
 						width="60px"> <img
-						src="../resources/main/search/price/1.png" width="60px"> <img
-						src="../resources/main/search/price/2.png" width="60px"> <img
-						src="../resources/main/search/price/3.png" width="60px">
+						src="resources/main/search/price/1.png" width="60px"> <img
+						src="resources/main/search/price/2.png" width="60px"> <img
+						src="resources/main/search/price/3.png" width="60px">
 				</div>
 				<div id="sort4">
-					혼밥 난이도 <br> <img src="../resources/main/search/lv/lv1.png"
-						width="70px"> <img src="../resources/main/search/lv/lv2.png"
-						width="70px"> <img src="../resources/main/search/lv/lv3.png"
+					혼밥 난이도 <br> <img src="resources/main/search/lv/lv1.png"
+						width="70px"> <img src="resources/main/search/lv/lv2.png"
+						width="70px"> <img src="resources/main/search/lv/lv3.png"
 						width="70px"><br> <img
-						src="../resources/main/search/lv/lv4.png" width="70px"> <img
-						src="../resources/main/search/lv/lv5.png" width="70px"> <img
-						src="../resources/main/search/lv/lv6.png" width="70px"><br>
-					<img src="../resources/main/search/lv/lv7.png" width="70px">
-					<img src="../resources/main/search/lv/lv8.png" width="70px">
-					<img src="../resources/main/search/lv/lv9.png" width="70px">
+						src="resources/main/search/lv/lv4.png" width="70px"> <img
+						src="resources/main/search/lv/lv5.png" width="70px"> <img
+						src="resources/main/search/lv/lv6.png" width="70px"><br>
+					<img src="resources/main/search/lv/lv7.png" width="70px">
+					<img src="resources/main/search/lv/lv8.png" width="70px">
+					<img src="resources/main/search/lv/lv9.png" width="70px">
 				</div>
 				<div id="btnS">
 					<div id="btnClose" class="btnBox">닫기</div>

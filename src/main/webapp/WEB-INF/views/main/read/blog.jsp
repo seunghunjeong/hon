@@ -8,7 +8,7 @@
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-<link rel="stylesheet" href="../resources/hon.css">
+<link rel="stylesheet" href="resources/hon.css">
 <!--  css -->
 </head>
 <body>

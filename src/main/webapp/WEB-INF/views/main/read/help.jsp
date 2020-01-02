@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>BLUEB</title>
-<link rel="stylesheet" href="../resources/hon.css">
+<link rel="stylesheet" href="resources/hon.css">
 </head>
 
 <body>

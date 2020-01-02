@@ -13,7 +13,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!--  bootstrap -->
-<link rel="stylesheet" href="../resources/hon.css">
+<link rel="stylesheet" href="resources/hon.css">
 <!--  css -->
 </head>
 <body>
@@ -23,7 +23,7 @@
 			<jsp:include page="menu.jsp"></jsp:include>
 			<!-- 메뉴 -->
 			<div id="title">
-				<img src="../resources/main/title.PNG" width="100%">
+				<img src="resources/main/title.PNG" width="100%">
 			</div>
 		</div>
 		<jsp:include page="nav.jsp"></jsp:include>

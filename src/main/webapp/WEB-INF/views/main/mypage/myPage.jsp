@@ -13,14 +13,14 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!--  bootstrap -->
-<link rel="stylesheet" href="../resources/honMY.css">
+<link rel="stylesheet" href="resources/honMY.css">
 <!--  css -->
 </head>
 <body>
 	<div id="page">
 		<div id="title">
 			<a href="mainPage"><img id="logo"
-				src="../resources/main/logo2.png" width=40></a>
+				src="resources/main/logo2.png" width=40></a>
 			<div id="titleTXT">마이혼끼</div>
 		</div>
 		<div id="info">
@@ -37,7 +37,7 @@
 				관심매장
 			</div>
 			<div id="pay" class=boxN>
-				<span><img src="../resources/mypage/won.png" width="17px" /></span><br>
+				<span><img src="resources/mypage/won.png" width="17px" /></span><br>
 				결제내역
 			</div>
 		</div>

@@ -13,14 +13,14 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!--  bootstrap -->
-<link rel="stylesheet" href="../resources/honMY.css">
+<link rel="stylesheet" href="resources/honMY.css">
 <!--  css -->
 </head>
 <body>
 	<div id="page">
 		<div id="title">
 			<a href="mainPage"><img id="logo"
-				src="../resources/main/logo2.png" width=40></a> <span id="titleTXT">관심매장</span>
+				src="resources/main/logo2.png" width=40></a> <span id="titleTXT">관심매장</span>
 		</div>
 		<div id="contentU">
 			<div class="boxB">
