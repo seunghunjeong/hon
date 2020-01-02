@@ -1,0 +1,554 @@
+@CHARSET "UTF-8";
+
+/* 웹폰트 카페24 심플 */
+@font-face {
+	font-family: 'Cafe24Simplehae';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Simplehae.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* 웹폰트 ON I고딕 */
+@font-face {
+	font-family: 'ON-IGothic';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* 스크롤바 숨기기 */
+body::-webkit-scrollbar {
+	display: none;
+}
+
+#page::-webkit-scrollbar {
+	display: none;
+}
+
+#nav::-webkit-scrollbar {
+	display: none;
+}
+
+#dBack::-webkit-scrollbar {
+	display: none;
+}
+
+#lBox::-webkit-scrollbar {
+	display: none;
+}
+
+/* main */
+#page {
+	margin-top: 40px;
+	width: 100%;
+	background-image: url("main/bg1.png");
+	min-height: 100%;
+	background-position: center;
+	background-size: cover;
+	overflow: hidden;
+}
+
+#header {
+	width: 100%;
+}
+
+#menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 40px;
+	background: brown;
+	z-index: 5;
+}
+
+#logo {
+	float: left;
+}
+
+#login {
+	float: right;
+	font-size: 1.8rem;
+}
+
+#title {
+	width: 100%;
+}
+
+/* 10개 하나는 더보기 */
+#nav {
+	background: #e6a631;
+	width: 100%;
+	height: 110px;
+	border-top: 1px solid rgba(150, 75, 0, .1);
+	overflow: auto;
+}
+
+#navF {
+	width: 780px;
+	height: 100px;
+}
+
+#navF p {
+	font-size: 1rem;
+}
+
+.favor {
+	float: left;
+	margin: 7px;
+	text-align: center;
+	margin-bottom: 2px;
+}
+
+#content {
+	position: relative;
+	left: 50%;
+	margin-left: -180px;
+	width: 100%;
+	border-top: 1px solid rgba(150, 75, 0, .2);
+}
+
+.thumb {
+	width: 100px;
+	height: 150px;
+	float: left;
+	margin: 10px;
+}
+
+#inputbox {
+	float: left;
+}
+
+#keyword {
+	width: 150px;
+	background-image: url(main/searchIcon.png);
+	background-position: 5px center;
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	outline: none;
+	background-image: url(main/searchIcon.png);
+}
+
+/* search */
+#searchInfo {
+	width: 100%;
+	height: 30px;
+	padding: 5px;
+	font-family: 'Cafe24Simplehae';
+}
+
+#searchInfo span {
+	font-size: 1.25rem;
+}
+
+#search {
+	position: relative;
+	left: 50%;
+	margin-left: -180px;
+	width: 100%;
+	border-top: 1px solid rgba(150, 75, 0, .2);
+}
+
+#dBack {
+	position: absolute;
+	top: 40px;
+	left: 0px;
+	right: 0px;
+	height: 100%;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+	overflow-x: hidden;
+	display: none;
+}
+
+#lBox {
+	width: 320px;
+	height: 100%;
+	margin: 20px auto;
+	padding: 10px;
+	border: 1px solid #333333;
+	border-radius: 5px;
+	background: white;
+	box-shadow: 0px 5px 5px rgba(34, 25, 25, 0.4);
+	text-align: center;
+	margin: 20px auto;
+	font-family: 'Tmon몬소리';
+	overflow: scroll;
+	border: 1px solid #333333;
+	padding-bottom: 80px;
+}
+
+#sort1 {
+	height: 50px;
+}
+
+#sort2 {
+	height: 230px;
+	border-top: 1px solid rgba(150, 75, 0, .2);
+}
+
+#sort3 {
+	height: 100px;
+	border-top: 1px solid rgba(150, 75, 0, .2);
+}
+
+#sort4 {
+	height: 230px;
+	border-top: 1px solid rgba(150, 75, 0, .2);
+	margin-bottom: 30px;
+}
+
+.btnBox {
+	width: 159px;
+	float: left;
+}
+
+#btnS {
+	position: fixed;
+	left: 50%;
+	bottom: 0;
+	margin-left: -159px;
+}
+
+#btnClose {
+	background: gray;
+}
+
+#btnApply {
+	background: orange;
+}
+
+/* read */
+#contentR {
+	position: relative;
+	left: 50%;
+	margin-left: -180px;
+	width: 100%;
+	height: 600px;
+	padding: 10px;
+}
+
+#storeImg {
+	height: 180px;
+	cursor: pointer;
+}
+
+#storeImg img {
+	width: 85px;
+	height: 85px;
+	float: left;
+}
+
+#storeImg img:FIRST-CHILD {
+	width: 170px;
+	height: 170px;
+}
+
+#imgMenu {
+	width: 85px;
+	height: 85px;
+	float: left;
+	background: gray;
+}
+
+#menuTXT {
+	margin-top: 28px;
+	text-align: center;
+	font-family: 'Tmon몬소리';
+	font-size: 2.5rem;
+}
+
+#storeInfo {
+	height: 180px;
+	border-top: 1px solid rgba(150, 75, 0, .1);
+	font-family: 'ON-IGothic';
+}
+
+#storeName {
+	font-size: 4rem;
+	color: brown;
+}
+
+#storeInfo table td {
+	font-weight: 500;
+}
+
+#storeMap {
+	border-top: 1px solid rgba(150, 75, 0, .1);
+	height: 180px;
+	padding: 10px;
+}
+
+#staticMap {
+	width: 320px;
+	height: 180px;
+}
+
+#help {
+	font-size: 0.5rem;
+}
+
+/* read2 */
+#storeReview {
+	
+}
+
+.reviewR {
+	width: 340px;
+	height: 80px;
+	background: white;
+	margin-bottom: 7px;
+	border-radius: 5px;
+	border: 1px solid rgba(150, 75, 0, .1);
+	clear: both;
+}
+
+#imgBoxR {
+	width: 55px;
+	margin-left: 5px;
+	float: left;
+}
+
+#rContentR {
+	width: 260px;
+	float: left;
+	margin-left: 10px;
+}
+
+#imgBoxR p {
+	font-size: 0.3rem;
+	line-height: 1rem;
+	text-align: center;
+}
+
+#rContentR p {
+	font-size: 1.5rem;
+}
+
+#rContentR small {
+	font-size: 0.5rem;
+	color: gray;
+}
+
+#moreR {
+	width: 340px;
+	text-align: center;
+	background: rgba(150, 75, 0, .3);
+	border-radius: 5px;
+}
+
+#storeBlog {
+	height: 130px;
+	margin-top: 10px;
+}
+
+#storeBlog tr {
+	border-bottom: 1px solid rgba(150, 75, 0, .3);
+	font-size: 0.8125rem;
+}
+
+#storeBlog tr small {
+	font-size: 0.625rem;
+	color: rgba(0, 0, 0, .5);
+}
+
+#storeBlog a:link {
+	color: black;
+	text-decoration: none;
+}
+
+#storeBlog a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+#storeBlog a:hover {
+	color: black;
+	text-decoration: none;
+}
+
+#storeRecom {
+	height: 100px;
+	margin-top: 10px;
+}
+
+#storeRecom tr {
+	border-bottom: 1px solid rgba(150, 75, 0, .3);
+	font-size: 0.8125rem;
+}
+
+#storeRecom tr small {
+	font-size: 0.625rem;
+	color: rgba(0, 0, 0, .5);
+}
+
+/* read button */
+#footerR {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	padding: 8px;
+	height: 35px;
+	background: gray;
+}
+
+#btnR {
+	position: relative;
+	left: 50%;
+	margin-left: -170px;
+	width: 100%;
+}
+
+.btnBoxR {
+	width: 159px;
+	float: left;
+	border-radius: 5px 0px;
+	text-align: center;
+	background: red;
+	color: white;
+}
+
+#btnCall {
+	margin-right: 14px;
+	margin-left: 6px;
+}
+
+#btnRV {
+	
+}
+
+/* read more image */
+#dPage {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 640px;
+	width: 100%;
+	background: rgba(0, 0, 0, .8);
+	z-index: 1000;
+	overflow-x: hidden;
+	display: none;
+}
+
+#dBox {
+	width: 100%;
+	height: 45px;
+	background: black;
+}
+
+#nameB {
+	font-size: 1.25rem;
+	color: white;
+	float: left;
+	padding: 8px;
+}
+
+#close #x {
+	font-size: 1.875rem;
+	float: right;
+	color: white;
+	margin-right: 8px;
+	margin-top: 8px;
+}
+
+#imgBox {
+	width: 360px;
+	height: 360px;
+	margin: 0px auto;
+	margin-top: 120px;
+	border: 1px solid #333333;
+	border-radius: 5px;
+	background: white;
+	box-shadow: 0px 5px 5px rgba(34, 25, 25, 0.4);
+	text-align: center;
+	overflow: hidden;
+	border: 1px solid #333333;
+}
+
+#imgBox img {
+	width: 360px;
+	height: 360px;
+}
+
+/* RV */
+#contentRV {
+	padding: 10px;
+	height: 600px;
+}
+
+#menuInfo {
+	background: white;
+	width: 100%;
+	height: 360px;
+	box-shadow: 5px 5px 5px;
+}
+
+#menuInfo h5 {
+	padding: 5px 0px 0px 5px;
+}
+
+#menuInfo ul li {
+	background:
+		url(https://s3-ap-northeast-1.amazonaws.com/dcicons/new/images/web/Content/dash-line.jpg)
+		repeat-x center;
+	overflow: hidden;
+	padding-top: 10px;
+}
+
+#menuInfo ul {
+	list-style: none;
+	padding-left: 0px;
+	overflow: hidden;
+}
+
+#chk {
+	padding-left: 2px;
+	width: 15px;
+	float: left;
+	background: #fff;
+	width: 15px;
+}
+
+#menuInfo .l-txt {
+	font-size: 1.2rem;
+	background: #fff;
+	float: left;
+}
+
+#menuInfo .r-txt {
+	padding-right: 5px;
+	font-size: 1.2rem;
+	background: #fff;
+	float: right;
+}
+
+#timeRV {
+	margin-top: 10px;
+	width: 100%;
+	height: 33px;
+	box-shadow: 5px 5px 5px;
+	background: #fff;
+	text-align: right;
+	padding-right: 5px;
+	padding-top: 5px;
+}
+
+#timeRV b {
+	float: left;
+	padding-left: 5px;
+}
+
+#requestRV {
+	margin-top: 10px;
+	width: 100%;
+	height: 90px;
+	box-shadow: 5px 5px 5px;
+	background: #fff;
+	padding: 5px;
+}
