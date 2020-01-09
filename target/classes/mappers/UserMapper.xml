@@ -1,8 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper  namespace="UserMapper">
+<mapper namespace="UserMapper">
 	<select id="login" resultType="com.example.domain.UserVO">
-		select * from hon_joinu where uid=#{uid} and upw=#{upw}
+		select * from hon_joinu where
+		uid=#{uid} and upw=#{upw}
 	</select>
+
+	<insert id="replyU">
+		insert into user_reply(uid, sid, retext, image,
+		score, regidate)
+		values(#{uid}, #{sid}, #{retext}, "", #{score},
+		now());
+	</insert>
+
+	<insert id="userFI">
+		insert into user_favor(uid, sid, favor)
+		values(#{uid}, #{sid}, 1);
+	</insert>
+
+	<update id="userFU">
+		update user_favor set favor = #{favor} where uid =
+		#{uid};
+	</update>
+
+	<select id="listUFL" resultMap="UFLMapList">
+		select * from user_favor where
+		uid = #{uid}
+	</select>
+
+	<resultMap type="java.util.HashMap" id="UFLMapList">
+		<result javaType="java.lang.Integer" column="fcnt" property="fcnt" />
+		<result javaType="java.lang.String" column="sid" property="sid" />
+		<result javaType="java.lang.String" column="uid" property="uid" />
+		<result javaType="java.lang.Integer" column="favor" property="favor" />
+	</resultMap>
 </mapper>

@@ -3,7 +3,14 @@ package com.example.domain;
 public class SearchCriteria extends Criteria{
 	private String searchType;
 	private String keyword;
+	private String tmp;
 	
+	public String getTmp() {
+		return tmp;
+	}
+	public void setTmp(String tmp) {
+		this.tmp = tmp;
+	}
 	public String getSearchType() {
 		return searchType;
 	}

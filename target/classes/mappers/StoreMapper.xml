@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="StoreMapper">
+	<insert id="insertS">
+		insert into CEO_store(sid, sname, location, phone,
+		simage, weather, yearS,
+		lvs, priceS, OpeningT ,restT, website, Ftype,
+		RestD, info)
+		values(#{sid},#{sname} ,#{location}, #{phone},
+		#{simage},#{weather},#{yearS},
+		#{lvs}, #{priceS},#{OpeningT},
+		#{restT},#{website},#{Ftype},#{RestD},
+		#{info});
+	</insert>
+
+	<select id="listS" resultType="com.example.domain.StoreVO">
+		select * from ceo_store
+		order by
+		sid
+		DESC
+		limit 0, 9
+	</select>
+
+	<select id="totalS" resultType="int">
+		select count(*) from ceo_store
+	</select>
+
+	<select id="readS" resultType="com.example.domain.StoreVO">
+		select * from ceo_store
+		where sid =
+		#{sid}
+	</select>
+
+	<select id="searchS" resultType="com.example.domain.StoreVO">
+		select * from ceo_store
+		where
+		<if test="searchType==''">
+			sname like CONCAT('%',#{keyword},'%') or
+			Ftype like
+			CONCAT('%',#{keyword},'%') or
+			location like CONCAT('%',#{keyword},'%')
+		</if>
+		<if test="searchType=='weather'">
+			sname like CONCAT('%',#{keyword},'%') or
+			Ftype like
+			CONCAT('%',#{keyword},'%') or
+			location like CONCAT('%',#{keyword},'%')
+			and weather=${tmp}
+		</if>
+		<if test="searchType=='yearS'">
+			sname like CONCAT('%',#{keyword},'%') or
+			Ftype like
+			CONCAT('%',#{keyword},'%') or
+			location like CONCAT('%',#{keyword},'%')
+			and yearS=${tmp}
+		</if>
+		<if test="searchType=='location'">
+			sname like CONCAT('%',#{keyword},'%') or
+			Ftype like
+			CONCAT('%',#{keyword},'%') or
+			location like CONCAT('%',#{keyword},'%')
+			and location like CONCAT('%',#{tmp},'%')
+		</if>
+		<if test="searchType=='priceS'">
+			sname like CONCAT('%',#{keyword},'%') or
+			Ftype like
+			CONCAT('%',#{keyword},'%') or
+			location like CONCAT('%',#{keyword},'%')
+			and priceS = #{tmp}
+		</if>
+		<if test="searchType=='lvs'">
+			sname like CONCAT('%',#{keyword},'%') or
+			Ftype like
+			CONCAT('%',#{keyword},'%') or
+			location like CONCAT('%',#{keyword},'%')
+			and lvs = #{tmp}
+		</if>
+		order by sid
+		DESC
+		limit
+		#{pageStart}, #{perPageNum}
+	</select>
+
+	<select id="searchToT" resultType="int">
+		select count(*) from ceo_store
+		where
+		<if test="searchType==''">
+			sname like CONCAT('%',#{keyword},'%') or
+			Ftype like
+			CONCAT('%',#{keyword},'%') or
+			location like CONCAT('%',#{keyword},'%')
+		</if>
+		<if test="searchType=='weather'">
+			sname like CONCAT('%',#{keyword},'%') or
+			Ftype like
+			CONCAT('%',#{keyword},'%') or
+			location like CONCAT('%',#{keyword},'%')
+			and weather=${tmp}
+		</if>
+		<if test="searchType=='yearS'">
+			sname like CONCAT('%',#{keyword},'%') or
+			Ftype like
+			CONCAT('%',#{keyword},'%') or
+			location like CONCAT('%',#{keyword},'%')
+			and yearS=${tmp}
+		</if>
+		<if test="searchType=='location'">
+			sname like CONCAT('%',#{keyword},'%') or
+			Ftype like
+			CONCAT('%',#{keyword},'%') or
+			location like CONCAT('%',#{keyword},'%')
+			and location like CONCAT('%',#{tmp},'%')
+		</if>
+		<if test="searchType=='priceS'">
+			sname like CONCAT('%',#{keyword},'%') or
+			Ftype like
+			CONCAT('%',#{keyword},'%') or
+			location like CONCAT('%',#{keyword},'%')
+			and priceS = #{tmp}
+		</if>
+		<if test="searchType=='lvs'">
+			sname like CONCAT('%',#{keyword},'%') or
+			Ftype like
+			CONCAT('%',#{keyword},'%') or
+			location like CONCAT('%',#{keyword},'%')
+			and lvs = #{tmp}
+		</if>
+	</select>
+
+	<insert id="replyS">
+		insert into store_rating(uid, sid, retext, image,
+		score, regidate)
+		values(#{uid}, #{sid}, #{retext}, "", #{score},
+		now());
+	</insert>
+
+	<select id="listRpS" resultMap="selectMapList">
+		select u.image, u.nick, s.score,
+		s.regidate, s.retext from hon_joinU u, store_rating s where u.uid =
+		s.uid and sid = #{sid} order by rid desc limit #{page}, 3;
+	</select>
+
+	<select id="RpSTOT" resultType="int">
+		select count(*) from hon_joinU u,
+		store_rating s where u.uid =
+		s.uid and sid = #{sid}
+	</select>
+
+	<resultMap type="java.util.HashMap" id="selectMapList">
+		<result javaType="java.lang.String" column="u.image" property="image" />
+		<result javaType="java.lang.String" column="u.nick" property="nick" />
+		<result javaType="java.lang.String" column="s.score" property="score" />
+		<result javaType="java.util.Date" column="s.regidate" property="regidate" />
+		<result javaType="java.lang.String" column="s.retext" property="retext" />
+	</resultMap>
+
+	<select id="FChk" resultType="String">
+		select favor from user_favor where
+		sid = #{sid} and uid = #{uid};
+	</select>
+</mapper>

@@ -15,23 +15,39 @@
 		<div id="inputbox" class="input-group">
 			<input type="text" id="keyword" class="form-control"> <span
 				class="input-group-btn" style="float: left;">
-				<button id="btnSearch" class="btn btn-default" type="button">검색</button>
+				<button id="btnSearch" class="btn btn-default" type="button"
+					placehold="지역, 음식종류, 식당이름">검색</button>
 			</span>
 		</div>
 		<!-- /input-group -->
 
 		<c:if test="${uid != null}">
-			<button onClick="location.href='logout'" class="btn btn-primary" id="login">로그아웃</button>
-		<a href="myPage">${uid}</a>		<!-- 썸네일로 바꾸기 -->
-	</c:if>
-		<c:if test="${uid == null}">
-		<button id="login" type="button" class="btn btn-primary" onClick="location.href='login'">로그인</button>
+<!-- 			 <button onClick="location.href='logout'" class="btn btn-primary" -->
+<!-- 				id="login">로그아웃</button> -->
+			<a href="myPage"><img id="login" src="${user.image}" width="35px" class="img-circle"></a>
+			<!-- 썸네일로 바꾸기 -->
 		</c:if>
+		<c:if test="${uid == null}">
+			<button id="login" type="button" class="btn btn-primary"
+				onClick="location.href='login'">로그인</button>
+		</c:if>
+		<!-- 로그인 -->
 	</div>
 </body>
 <script type="text/javascript">
-	$("#btnSearch").on("click", function() {
-		location.href = "search";
-	});
+	var keyword;
+
+	$("#btnSearch").on(
+			"click",
+			function() {
+				var searchType = "";
+				keyword = $("#keyword").val();
+				if (keyword == "") {
+					alert("검색어를 입력해주세요.");
+					return;
+				}
+				location.href = "search?keyword=" + keyword + "&searchType="
+						+ searchType;
+			});
 </script>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,6 +10,8 @@
   maximum-scale=1.0, minimum-scale=1.0">
 <title>혼자 한끼</title>
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <!-- jquery -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -27,83 +30,45 @@
 			</div>
 		</div>
 		<jsp:include page="nav.jsp"></jsp:include>
-		<div id="content">
-			<div class="thumb thumbnail">
-				<img src="http://placehold.it/100x100" alt="favor"
-					class="img-thumbnail">
-				<div class="caption">
-					<h6>
-						음식점 이름 <small>평점 ★★★★☆</small>
-					</h6>
-				</div>
-			</div>
-			<div class="thumb thumbnail">
-				<img src="http://placehold.it/100x100" alt="favor"
-					class="img-thumbnail">
-				<div class="caption">
-					<h6>
-						음식점 이름 <small>평점 ★★★★☆</small>
-					</h6>
-				</div>
-			</div>
-			<div class="thumb thumbnail">
-				<img src="http://placehold.it/100x100" alt="favor"
-					class="img-thumbnail">
-				<div class="caption">
-					<h6>
-						음식점 이름 <small>평점 ★★★★☆</small>
-					</h6>
-				</div>
-			</div>
-			<div class="thumb thumbnail">
-				<img src="http://placehold.it/100x100" alt="favor"
-					class="img-thumbnail">
-				<div class="caption">
-					<h6>
-						음식점 이름 <small>평점 ★★★★☆</small>
-					</h6>
-				</div>
-			</div>
-			<div class="thumb thumbnail">
-				<img src="http://placehold.it/100x100" alt="favor"
-					class="img-thumbnail">
-				<div class="caption">
-					<h6>
-						음식점 이름 <small>평점 ★★★★☆</small>
-					</h6>
-				</div>
-			</div>
-			<div class="thumb thumbnail">
-				<img src="http://placehold.it/100x100" alt="favor"
-					class="img-thumbnail">
-				<div class="caption">
-					<h6>
-						음식점 이름 <small>평점 ★★★★☆</small>
-					</h6>
-				</div>
-			</div>
-			<div class="thumb thumbnail">
-				<img src="http://placehold.it/100x100" alt="favor"
-					class="img-thumbnail">
-				<div class="caption">
-					<h6>
-						음식점 이름 <small>평점 ★★★★☆</small>
-					</h6>
-				</div>
-			</div>
-			<div class="thumb thumbnail">
-				<img src="http://placehold.it/100x100" alt="favor"
-					class="img-thumbnail">
-				<div class="caption">
-					<h6>
-						음식점 이름 <small>평점 ★★★★☆</small>
-					</h6>
-				</div>
-			</div>
-		</div>
+		<div id="content"></div>
 		<!-- content  -->
+		<script id="temp" type="text/x-handlebars-template">
+		<div id="TXT"><h3>오늘의 추천 맛집</h3></div>
+		{{#each .}}
+			<div class="thumb thumbnail" onClick="location.href='read?sid={{sid}}'">
+				<img src="{{simage}}" class="img-thumbnail" width=100%  min-height=75>
+				<div class="caption">
+					<h6>
+						{{sname}} <br><small>평점 ★★★★☆</small>
+					</h6>
+				</div>
+			</div>
+		{{/each}}
+		</script>
+		<!-- <div class="thumb thumbnail">
+				<img src="http://placehold.it/100x100" alt="favor"
+					class="img-thumbnail">
+				<div class="caption">
+					<h6>
+						음식점 이름 <small>평점 ★★★★☆</small>
+					</h6>
+				</div>
+			</div> -->
 	</div>
 	<!-- page -->
 </body>
+<script>
 
+	getListS();
+	function getListS() {
+		$.ajax({
+			type : "get",
+			url : "listS.json",
+			success : function(data) {
+				var temp = Handlebars.compile($("#temp").html());
+				$("#content").html(temp(data));
+			}
+		});
+	}
+</script>
 </html>

@@ -26,7 +26,7 @@
 	</script>
 </body>
 <script>
-	var keyword = "고베 규카츠";
+	var keyword = "${vo.sname}";
 	var start = 1;
 
 	getListR();

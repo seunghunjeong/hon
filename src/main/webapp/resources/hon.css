@@ -72,7 +72,8 @@ body::-webkit-scrollbar {
 
 #login {
 	float: right;
-	font-size: 1.8rem;
+	font-size: 1.6rem;
+	margin: 2px;
 }
 
 #title {
@@ -89,12 +90,17 @@ body::-webkit-scrollbar {
 }
 
 #navF {
-	width: 780px;
 	height: 100px;
 }
 
 #navF p {
 	font-size: 1rem;
+}
+
+#welcome {
+	position: relative;
+	left: 50%;
+	margin-left: -170px;
 }
 
 .favor {
@@ -112,25 +118,34 @@ body::-webkit-scrollbar {
 	border-top: 1px solid rgba(150, 75, 0, .2);
 }
 
+#TXT {
+	padding-left: 15px;
+}
+
 .thumb {
-	width: 100px;
+	width: 110px;
 	height: 150px;
 	float: left;
-	margin: 10px;
+	margin: 5px;
 }
 
 #inputbox {
 	float: left;
+	padding: 1px;
 }
 
 #keyword {
-	width: 150px;
+	width: 170px;
+	height: 38px;
 	background-image: url(main/searchIcon.png);
 	background-position: 5px center;
 	background-repeat: no-repeat;
 	padding-left: 30px;
 	outline: none;
-	background-image: url(main/searchIcon.png);
+}
+
+#btnSearch {
+	height: 38px;
 }
 
 /* search */
@@ -150,7 +165,13 @@ body::-webkit-scrollbar {
 	left: 50%;
 	margin-left: -180px;
 	width: 100%;
+	height: 480px;
 	border-top: 1px solid rgba(150, 75, 0, .2);
+}
+
+#pagination {
+	margin-top: 15px;
+	clear: both;
 }
 
 #dBack {
@@ -180,7 +201,6 @@ body::-webkit-scrollbar {
 	font-family: 'Tmon몬소리';
 	overflow: scroll;
 	border: 1px solid #333333;
-	padding-bottom: 80px;
 }
 
 #sort1 {
@@ -190,6 +210,9 @@ body::-webkit-scrollbar {
 #sort2 {
 	height: 230px;
 	border-top: 1px solid rgba(150, 75, 0, .2);
+	background-image: url("main/search/map.jpg");
+	background-position: center;
+	background-size: cover;
 }
 
 #sort3 {
@@ -200,7 +223,7 @@ body::-webkit-scrollbar {
 #sort4 {
 	height: 230px;
 	border-top: 1px solid rgba(150, 75, 0, .2);
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 
 .btnBox {
@@ -274,6 +297,44 @@ body::-webkit-scrollbar {
 	color: brown;
 }
 
+#iconReply {
+	font-size: 1.7rem;
+}
+
+#rBox {
+	width: 320px;
+	height: 210px;
+	margin: 240px auto;
+	padding: 10px;
+	border: 1px solid #333333;
+	border-radius: 5px;
+	background: white;
+	box-shadow: 0px 5px 5px rgba(34, 25, 25, 0.4);
+	font-family: 'Tmon몬소리';
+	overflow: scroll;
+	border: 1px solid #333333;
+}
+
+#close #x1 {
+	font-size: 1.875rem;
+	float: right;
+	color: black;
+	margin-right: 3px;
+	margin-top: 3px;
+}
+
+#tblRp {
+	text-align: center;
+}
+
+#iconFavor {
+	font-size: 1.7rem;
+}
+
+#btnCenter {
+	text-align: center;
+}
+
 #storeInfo table td {
 	font-weight: 500;
 }
@@ -337,7 +398,7 @@ body::-webkit-scrollbar {
 
 #moreR {
 	width: 340px;
-	text-align: center;
+	padding-left:150px;
 	background: rgba(150, 75, 0, .3);
 	border-radius: 5px;
 }

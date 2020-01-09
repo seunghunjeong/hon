@@ -10,7 +10,7 @@
 </head>
 <body>
 	<!-- value에 주소값을 넣어주면된다. -->
-	<input type="hidden" id="address" value="인천시 남동구 구월동 1463" size="70">
+	<input type="hidden" id="address" value="${vo.location }" size="70">
 
 	<!-- 이미지 지도를 표시할 div 입니다 -->
 	<div id="staticMap"></div>
@@ -20,7 +20,7 @@
 	<script>
 		var address = document.getElementById("address");
 		var x, y = "";
-		var nameS ="구월동 고베 규카츠"; // 음식점 이름
+		var nameS ="${vo.sname}"; // 음식점 이름
 
 		var gap = address.value; // 주소검색어
 

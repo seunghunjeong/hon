@@ -8,6 +8,9 @@
 	content="width=device-width, initial-scale=1.0, user-scalable=no, 
   maximum-scale=1.0, minimum-scale=1.0">
 <title>~~~음식점</title>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!--  bootstrap -->
@@ -15,54 +18,31 @@
 <!--  css -->
 </head>
 <body>
-	<div id="page">
-		<div id="header">
+	<div id="">
+		<%-- <div id="header">
 			<jsp:include page="../menu.jsp"></jsp:include>
 			<!-- 메뉴 -->
 		</div>
-		<!-- header -->
-		<div id="contentR">
+		<!-- header --> --%>
+		<div id="">
+
 			<div id="storeReview">
-				<h5>리뷰(3)</h5>
-				<div class="reviewR">
-					<div id="imgBoxR">
-						<img src="http://placehold.it/55x55" alt="favor"
-							class="img-circle"><br>
-						<p>
-							2조 <br> <small>★☆☆☆☆</small>
-						</p>
+				<h5 id="Rps0">리뷰 ${RpsTOT }</h5>
+				<div class="reviewRps"></div>
+				<script id="tempRps" type="text/x-handlebars-template">
+					{{#each .}}
+					<div class="reviewR">
+						<div id="imgBoxR">
+						<img src="{{image}}" class="img-circle" width="60px"><br>
+						<p> {{nick}} <br> <small>평점 : {{score}}</small></p>
+						</div>
+						<div id="rContentR">
+						<small>{{regidate}}
+						<p>{{retext}}</p>
+						</div>
 					</div>
-					<div id="rContentR">
-						<small>2019.12.24</small>
-						<p>가성비는 좋지않음. 맛은 그럭저럭.</p>
-					</div>
-				</div>
-				<div class="reviewR">
-					<div id="imgBoxR">
-						<img src="http://placehold.it/55x55" alt="favor"
-							class="img-circle"><br>
-						<p>
-							조장 <br> <small>★☆☆☆☆</small>
-						</p>
-					</div>
-					<div id="rContentR">
-						<small>2019.12.24</small>
-						<p>그냥 일본가서 사먹는게 나음</p>
-					</div>
-				</div>
-				<div class="reviewR">
-					<div id="imgBoxR">
-						<img src="http://placehold.it/55x55" alt="favor"
-							class="img-circle"><br>
-						<p>
-							잠만보 <br> <small>★☆☆☆☆</small>
-						</p>
-					</div>
-					<div id="rContentR">
-						<small>2019.12.24</small>
-						<p>가서 자다옴</p>
-					</div>
-				</div>
+					{{/each}}
+				</script>
 				<div id="moreR">더보기</div>
 			</div>
 			<div id="storeBlog"><jsp:include page="blog.jsp"></jsp:include></div>
@@ -72,6 +52,8 @@
 	</div>
 </body>
 <script>
+	var page = 0;
+	var rps = "${RpsTOT }";
 	$("#contentR").on('mousewheel DOMMouseScroll', function(e) {
 		e.stopPropagation();
 		// html, body 에 마우스 휠 이벤트와 돔마우스스크롤 이벤트를 걸었습니다.
@@ -94,7 +76,7 @@
 		}
 
 		if (delta == 120) {
-			location.href = "read";
+			location.href = "read?sid=" + sid;
 		}
 	});
 
@@ -108,18 +90,78 @@
 		endX = event.originalEvent.changedTouches[0].screenX;
 		endY = event.originalEvent.changedTouches[0].screenY;
 		if (endY - startY > 50) {
-			location.href = "read";
+			location.href = "read?sid=" + sid;
 		}
 	});
 
 	$("#moreR").on("click", function() {
-		$("#storeReview").on('mousewheel DOMMouseScroll', function(e) {
+		$("#storeReview").on('touchend', function(e) {
 			//상위로 이벤트가 전파되지 않도록 중단한다.
 			e.stopPropagation();
 		});
+		page += 3
+		getListRpS();
+		$("#page").css("overflow", "auto");
 	});
 	$("#btnRV").on("click", function() {
 		location.href = "RV";
 	});
+
+	// 덧글 리스트
+
+	getListRpS();
+	function getListRpS() {
+		$.ajax({
+			url : "listRpS.json",
+			type : "get",
+			data : {
+				"page" : page,
+				"sid" : sid
+			},
+			success : function(data) {
+				var tempRps = Handlebars.compile($("#tempRps").html());
+				for (var i = 0; i < data.length; i++) {
+					// var date = new Date(data[i].regidate); // Wed Jan 08 2020 11:09:20 GMT+0900 (한국 표준시)
+					// alert(datez(date));
+					data[i].regidate = datez(new Date(data[i].regidate));
+				}
+				$(".reviewRps").append(tempRps(data));
+
+				if (rps == 0) {
+					$("#Rps0").html("첫 리뷰의 주인공이 되어주세요.");
+				} else if (data.length == 0)
+					alert("리뷰가 없어요.");
+			}
+		});
+	}
+
+	// 날짜 포멧 변환
+
+	function datez(date) {
+		now = date;
+		year = "" + now.getFullYear();
+		month = "" + (now.getMonth() + 1);
+		if (month.length == 1) {
+			month = "0" + month;
+		}
+		day = "" + now.getDate();
+		if (day.length == 1) {
+			day = "0" + day;
+		}
+		hour = "" + now.getHours();
+		if (hour.length == 1) {
+			hour = "0" + hour;
+		}
+		minute = "" + now.getMinutes();
+		if (minute.length == 1) {
+			minute = "0" + minute;
+		}
+		second = "" + now.getSeconds();
+		if (second.length == 1) {
+			second = "0" + second;
+		}
+		return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":"
+				+ second;
+	}
 </script>
 </html>

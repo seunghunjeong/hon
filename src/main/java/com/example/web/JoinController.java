@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.domain.CEOVO;
+import com.example.domain.StoreVO;
 import com.example.domain.UserVO;
 import com.example.persistence.CEODAO;
+import com.example.persistence.StoreDAO;
 import com.example.persistence.UserDAO;
 
 @Controller
@@ -34,6 +36,20 @@ public class JoinController {
 	@RequestMapping("rpage")
 	public String rpage() {
 		return "login/rpage";
+	}
+	
+	@Inject
+	StoreDAO sdao;
+	
+	@RequestMapping("insertS")
+	public String insertS() {
+		return "insertS";
+	}
+	
+	@RequestMapping(value = "insertS", method = RequestMethod.POST)
+	public String insertSPost(StoreVO vo) throws Exception {
+		sdao.insert(vo);
+		return "redirect:mainPage";
 	}
 
 	// 사장 페이지

@@ -19,13 +19,14 @@
 <body>
 	<div id="page">
 		<div id="title">
-			<a href="mainPage"><img id="logo"
-				src="resources/main/logo2.png" width=40></a>
+			<a href="mainPage"><img id="logo" src="resources/main/logo2.png"
+				width=40></a>
 			<div id="titleTXT">마이혼끼</div>
 		</div>
 		<div id="info">
 			<img src="http://placehold.it/60x60" alt="favor" class="img-circle"
-				align="middle"> <small>닉네임</small> <span class="enter">></span>
+				align="middle"> <small>${user.nick }</small> <span
+				class="enter">></span>
 		</div>
 		<div id="nav">
 			<div id="userReview" class=boxN>
@@ -112,7 +113,9 @@
 	});
 
 	$("#logout").on("click", function() {
-		alert("로그아웃 하시겠습니까?");
+		if (!confirm("로그아웃 하시겠습니까?"))
+			return;
+		location.href = 'logout';
 	});
 
 	$("#userDrop").on("click", function() {

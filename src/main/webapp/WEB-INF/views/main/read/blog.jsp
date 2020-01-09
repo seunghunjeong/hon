@@ -26,7 +26,7 @@
 	</script>
 </body>
 <script>
-	var keyword = "구월동 고베 규카츠";
+	var keyword = "${vo.sname}";
 	var start = 1;
 
 	getListB();
@@ -45,11 +45,5 @@
 			}
 		});
 	}
-	
-	//더보기
-// 	$("#btnMore").on("click", function() {
-// 		start += 1;
-// 		getListB();
-// 	});
 </script>
 </html>

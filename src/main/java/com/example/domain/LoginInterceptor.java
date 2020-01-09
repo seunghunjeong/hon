@@ -27,11 +27,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		
 		//session정의
 		HttpSession session=request.getSession();
-		UserVO user=(UserVO)modelAndView.getModel().get("user");
+		UserVO user=(UserVO)modelAndView.getModel().get("user");	// controller에서 보낸거?
 		
 		//로그인 성공
 		if(user != null) {
 			session.setAttribute("uid", user.getUid());
+			session.setAttribute("user", user);
 			String dest=(String)session.getAttribute("dest");
 			response.sendRedirect(dest != null ? dest : "mainPage");
 		}
