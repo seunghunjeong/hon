@@ -17,16 +17,20 @@
 </head>
 <body>
 	<div id="page">
-		<div id="header">
+		<div id="headerS">
 			<jsp:include page="menu.jsp"></jsp:include>
 			<!-- 메뉴 -->
 			<div id="searchInfo">
-				<span id="t">${pm.cri.keyword } 검색결과 총 ${pm.totalCount }건</span> <span id="w"></span>
-				<button id="btnFilter" type="button" class="btn btn-default btn-xs"
-					style="float: right">
-					<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span><b>
-						필터</b>
-				</button>
+				<div style="float: left;">
+					<span id="t">${pm.cri.keyword } 검색결과 총 ${pm.totalCount }건</span><br>
+					<span id="w">필터를 적용해 보세요.</span>
+				</div>
+				<div style="float: right">
+					<button id="btnFilter" type="button" class="btn btn-default btn-xs">
+						<span class="glyphicon glyphicon-menu-hamburger"
+							aria-hidden="true"></span><b> 필터</b>
+					</button>
+				</div>
 			</div>
 		</div>
 		<!-- header -->
@@ -35,11 +39,9 @@
 		{{#each list}}
 			<div class="thumb thumbnail">
 				<a href="read?sid={{sid}}"><img src="{{simage}}"
-					alt="favor" class="img-thumbnail"></a>
+					alt="favor" class="imgTh img-thumbnail"></a>
 				<div class="caption">
-					<h6>
-						{{sname}}<br> <small>평점 ★★★★☆</small>
-					</h6>
+					<h6 style="line-height:170%"><b>{{sname}}</b><br><small>{{location}}</small></h6>
 				</div>
 			</div>			
 		{{/each}}
@@ -57,7 +59,8 @@
 					<img src="resources/main/search/snowmanTXT.png" width="40px"
 						onclick="getWeather()" />
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img
-						src="resources/main/search/ageTXT.png" width="40px" onclick="getAge()"/>
+						src="resources/main/search/ageTXT.png" width="40px"
+						onclick="getAge()" />
 				</div>
 				<div id="sort2">
 					지역별 <br>
@@ -68,26 +71,27 @@
 				</div>
 				<div id="sort3">
 					가격별 <br> <img src="resources/main/search/price/0.png"
-						width="60px" id="img0"> <img src="resources/main/search/price/1.png"
-						width="60px" id="img1"> <img src="resources/main/search/price/2.png"
-						width="60px" id="img2"> <img src="resources/main/search/price/3.png"
-						width="60px" id="img3">
+						width="60px" id="img0"> <img
+						src="resources/main/search/price/1.png" width="60px" id="img1">
+					<img src="resources/main/search/price/2.png" width="60px" id="img2">
+					<img src="resources/main/search/price/3.png" width="60px" id="img3">
 				</div>
 				<div id="sort4">
 					혼밥 난이도 <br> <img src="resources/main/search/lv/lv1.png"
-						width="70px" id="imgL1"> <img src="resources/main/search/lv/lv2.png"
-						width="70px" id="imgL2"> <img src="resources/main/search/lv/lv3.png"
-						width="70px" id="imgL3"><br> <img
-						src="resources/main/search/lv/lv4.png" width="70px" id="imgL4"> <img
-						src="resources/main/search/lv/lv5.png" width="70px" id="imgL5">
+						width="70px" id="imgL1"> <img
+						src="resources/main/search/lv/lv2.png" width="70px" id="imgL2">
+					<img src="resources/main/search/lv/lv3.png" width="70px" id="imgL3"><br>
+					<img src="resources/main/search/lv/lv4.png" width="70px" id="imgL4">
+					<img src="resources/main/search/lv/lv5.png" width="70px" id="imgL5">
 				</div>
 				<div id="btnS">
 					<div id="btnClose" class="btnBox">닫기</div>
-					<div id="btnApply" class="btnBox">적용</div>
+					<div id="btnReset" class="btnBox">해제</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 	<!-- page -->
 </body>
 <script>
@@ -113,10 +117,13 @@
 					success : function(data) {
 						var temp = Handlebars.compile($("#tempS").html());
 						$("#search").html(temp(data));
-						
+
+						$(".imgTh").css("width", "100px");
+						$(".imgTh").css("height", "80px");
+
 						var total = data.pm.totalCount;
-						
- 						$("#t").html(keyword + " 검색결과 총 " + total + " 건");
+
+						$("#t").html(keyword + " 검색결과 총 " + total + " 건");
 
 						if (total == 0) {
 							$("#search").html("검색결과가 없습니다.");
@@ -229,10 +236,10 @@
 			}
 		});
 	}
-	
+
 	// 나이순 정렬
-	
-	function getAge(){
+
+	function getAge() {
 		keyword = "${pm.cri.keyword}";
 		page = 1;
 		searchType = "yearS";
@@ -241,51 +248,51 @@
 		getSearchS();
 		$("#dBack").hide();
 	}
-	
+
 	// 지역순 정렬
-	
-	$("#btnSeoul").on("click",function(){
-		tmp="서울";
+
+	$("#btnSeoul").on("click", function() {
+		tmp = "서울";
 		getLoca();
 	});
-	$("#btnIncheon").on("click",function(){
-		tmp="인천";
+	$("#btnIncheon").on("click", function() {
+		tmp = "인천";
 		getLoca();
 	});
-	$("#btnBusan").on("click",function(){
-		tmp="부산";
+	$("#btnBusan").on("click", function() {
+		tmp = "부산";
 		getLoca();
 	});
-	
-	function getLoca(){
+
+	function getLoca() {
 		keyword = "${pm.cri.keyword}";
 		page = 1;
-		searchType = "location";
+		searchType = "area";
 		$("#w").html(tmp + " 음식점");
 		getSearchS();
 		$("#dBack").hide();
 	}
 
 	// 가격순 정렬
-	
-	$("#img0").on("click",function(){
+
+	$("#img0").on("click", function() {
 		tmp = "만원 미만";
 		getPriceS();
 	});
-	$("#img1").on("click",function(){
+	$("#img1").on("click", function() {
 		tmp = "1 만원";
 		getPriceS();
 	});
-	$("#img2").on("click",function(){
+	$("#img2").on("click", function() {
 		tmp = "2 만원";
 		getPriceS();
 	});
-	$("#img3").on("click",function(){
+	$("#img3").on("click", function() {
 		tmp = "3 만원";
 		getPriceS();
 	});
 
-	function getPriceS(){
+	function getPriceS() {
 		keyword = "${pm.cri.keyword}";
 		page = 1;
 		searchType = "priceS";
@@ -293,31 +300,31 @@
 		getSearchS();
 		$("#dBack").hide();
 	}
-	
+
 	// 가격순 정렬
-	
-	$("#imgL1").on("click",function(){
+
+	$("#imgL1").on("click", function() {
 		tmp = "1";
 		getLvS();
 	});
-	$("#imgL2").on("click",function(){
+	$("#imgL2").on("click", function() {
 		tmp = "2";
 		getLvS();
 	});
-	$("#imgL3").on("click",function(){
+	$("#imgL3").on("click", function() {
 		tmp = "3";
 		getLvS();
 	});
-	$("#imgL4").on("click",function(){
+	$("#imgL4").on("click", function() {
 		tmp = "4";
 		getLvS();
 	});
-	$("#imgL5").on("click",function(){
+	$("#imgL5").on("click", function() {
 		tmp = "5";
 		getLvS();
 	});
 
-	function getLvS(){
+	function getLvS() {
 		keyword = "${pm.cri.keyword}";
 		page = 1;
 		searchType = "lvs";
@@ -326,6 +333,18 @@
 		$("#dBack").hide();
 	}
 
+	// 필터 해제
+	$("#btnReset").on("click", function() {
+		$("#dBack").hide();
+		$("#page").unbind('touchmove');
+		$("body").css('overflow', 'auto');
+		$("#dBack").css('overflow', 'auto');
+		searchType = "";
+		tmp = "";
+		getSearchS();
+		$("#w").html("필터를 적용해 보세요.");
+	});
+
 	// 닫기
 	$("#btnClose").on("click", function() {
 		$("#dBack").hide();
@@ -333,7 +352,7 @@
 		$("body").css('overflow', 'auto');
 		$("#dBack").css('overflow', 'auto');
 	});
-	
+
 	// 어두운 부분 클릭하면 닫기
 	$('#dBack').click(function(e) {
 		if ($(e.target).hasClass("bbox")) {

@@ -84,13 +84,13 @@ body::-webkit-scrollbar {
 #nav {
 	background: #e6a631;
 	width: 100%;
-	height: 110px;
+	height: 90px;
 	border-top: 1px solid rgba(150, 75, 0, .1);
 	overflow: auto;
 }
 
 #navF {
-	height: 100px;
+	height: 90px;
 }
 
 #navF p {
@@ -108,6 +108,11 @@ body::-webkit-scrollbar {
 	margin: 7px;
 	text-align: center;
 	margin-bottom: 2px;
+}
+
+#MoreImg {
+	/* 	display: none; */
+	
 }
 
 #content {
@@ -149,6 +154,11 @@ body::-webkit-scrollbar {
 }
 
 /* search */
+#headerS {
+	width: 100%;
+	height: 50px;
+}
+
 #searchInfo {
 	width: 100%;
 	height: 30px;
@@ -157,6 +167,7 @@ body::-webkit-scrollbar {
 }
 
 #searchInfo span {
+	float: left;
 	font-size: 1.25rem;
 }
 
@@ -242,7 +253,7 @@ body::-webkit-scrollbar {
 	background: gray;
 }
 
-#btnApply {
+#btnReset {
 	background: orange;
 }
 
@@ -355,6 +366,10 @@ body::-webkit-scrollbar {
 }
 
 /* read2 */
+#null{
+	margin-top: -10px;
+}
+
 #storeReview {
 	
 }
@@ -398,7 +413,7 @@ body::-webkit-scrollbar {
 
 #moreR {
 	width: 340px;
-	padding-left:150px;
+	padding-left: 150px;
 	background: rgba(150, 75, 0, .3);
 	border-radius: 5px;
 }

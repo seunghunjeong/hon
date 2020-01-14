@@ -21,18 +21,80 @@
 
 	<update id="userFU">
 		update user_favor set favor = #{favor} where uid =
-		#{uid};
+		#{uid} and sid = #{sid};
 	</update>
 
 	<select id="listUFL" resultMap="UFLMapList">
-		select * from user_favor where
-		uid = #{uid}
+		select s.sname, s.simage, s.sid,
+		s.OpeningT, s.location, s.phone, s.Ftype from
+		ceo_store s, hon_joinu u,
+		user_favor f where u.uid = f.uid and s.sid =
+		f.sid and f.uid = #{uid}
+		and favor = 1 order by f.fcnt limit 0,9;
 	</select>
 
 	<resultMap type="java.util.HashMap" id="UFLMapList">
-		<result javaType="java.lang.Integer" column="fcnt" property="fcnt" />
-		<result javaType="java.lang.String" column="sid" property="sid" />
-		<result javaType="java.lang.String" column="uid" property="uid" />
-		<result javaType="java.lang.Integer" column="favor" property="favor" />
+		<result javaType="java.lang.String" column="s.sname" property="sname" />
+		<result javaType="java.lang.String" column="s.simage" property="simage" />
+		<result javaType="java.lang.String" column="s.sid" property="sid" />
+		<result javaType="java.lang.String" column="s.OpeningT"
+			property="OpeningT" />
+		<result javaType="java.lang.String" column="s.location"
+			property="location" />
+		<result javaType="java.lang.String" column="s.phone" property="phone" />
+		<result javaType="java.lang.String" column="s.Ftype" property="Ftype" />
 	</resultMap>
+
+	<select id="listURL" resultMap="URLMapList">
+		select s.simage,
+		s.sname,r.score,s.sid,r.regidate, r.retext, r.rid from user_reply r,
+		ceo_store s, hon_joinu u where
+		r.sid = s.sid and r.uid = u.uid and
+		u.uid
+		= #{uid};
+	</select>
+
+	<resultMap type="java.util.HashMap" id="URLMapList">
+		<result javaType="java.lang.String" column="s.sname" property="sname" />
+		<result javaType="java.lang.String" column="s.simage" property="simage" />
+		<result javaType="java.lang.String" column="s.sid" property="sid" />
+		<result javaType="java.lang.String" column="r.rid" property="rid" />
+		<result javaType="java.lang.Integer" column="r.score" property="score" />
+		<result javaType="java.util.Date" column="r.regidate" property="regidate" />
+		<result javaType="java.lang.String" column="r.retext" property="retext" />
+	</resultMap>
+
+	<delete id="deleteUR">
+		delete from user_reply where uid=#{uid} and rid =
+		#{rid};
+	</delete>
+
+	<insert id="joinU">
+		insert into hon_joinu(permit, uid, upw, nick,
+		location, gender, phone, email, birthday)
+		values(0,
+		#{uid},#{upw},
+		#{nick}, #{location}, #{gender}, #{phone},
+		#{email}, #{birthday});
+	</insert>
+
+	<select id="idChk" resultType="int">
+		select count(*) from hon_joinU
+		where
+		uid = #{uid}
+	</select>
+
+	<select id="nickChk" resultType="int">
+		select count(*) from hon_joinU
+		where
+		nick = #{nick}
+	</select>
+
+	<update id="upU">
+		update hon_joinU set upw = #{upw} , nick = #{nick}
+		,
+		phone = #{phone} , location = #{location} , email = #{email}
+		where uid
+		= #{uid}
+	</update>
 </mapper>

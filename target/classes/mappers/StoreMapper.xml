@@ -42,38 +42,43 @@
 			location like CONCAT('%',#{keyword},'%')
 		</if>
 		<if test="searchType=='weather'">
-			sname like CONCAT('%',#{keyword},'%') or
+			(sname like CONCAT('%',#{keyword},'%') or
 			Ftype like
 			CONCAT('%',#{keyword},'%') or
-			location like CONCAT('%',#{keyword},'%')
-			and weather=${tmp}
+			location like
+			CONCAT('%',#{keyword},'%'))
+			and weather=#{tmp}
 		</if>
 		<if test="searchType=='yearS'">
-			sname like CONCAT('%',#{keyword},'%') or
+			(sname like CONCAT('%',#{keyword},'%') or
 			Ftype like
 			CONCAT('%',#{keyword},'%') or
-			location like CONCAT('%',#{keyword},'%')
-			and yearS=${tmp}
+			location like
+			CONCAT('%',#{keyword},'%'))
+			and yearS=#{tmp}
 		</if>
-		<if test="searchType=='location'">
-			sname like CONCAT('%',#{keyword},'%') or
+		<if test="searchType=='area'">
+			(sname like CONCAT('%',#{keyword},'%') or
 			Ftype like
 			CONCAT('%',#{keyword},'%') or
-			location like CONCAT('%',#{keyword},'%')
-			and location like CONCAT('%',#{tmp},'%')
+			location like
+			CONCAT('%',#{keyword},'%'))
+			and area = #{tmp}
 		</if>
 		<if test="searchType=='priceS'">
-			sname like CONCAT('%',#{keyword},'%') or
+			(sname like CONCAT('%',#{keyword},'%') or
 			Ftype like
 			CONCAT('%',#{keyword},'%') or
-			location like CONCAT('%',#{keyword},'%')
+			location like
+			CONCAT('%',#{keyword},'%'))
 			and priceS = #{tmp}
 		</if>
 		<if test="searchType=='lvs'">
-			sname like CONCAT('%',#{keyword},'%') or
+			(sname like CONCAT('%',#{keyword},'%') or
 			Ftype like
 			CONCAT('%',#{keyword},'%') or
-			location like CONCAT('%',#{keyword},'%')
+			location like
+			CONCAT('%',#{keyword},'%'))
 			and lvs = #{tmp}
 		</if>
 		order by sid
@@ -92,38 +97,43 @@
 			location like CONCAT('%',#{keyword},'%')
 		</if>
 		<if test="searchType=='weather'">
-			sname like CONCAT('%',#{keyword},'%') or
+			(sname like CONCAT('%',#{keyword},'%') or
 			Ftype like
 			CONCAT('%',#{keyword},'%') or
-			location like CONCAT('%',#{keyword},'%')
-			and weather=${tmp}
+			location like
+			CONCAT('%',#{keyword},'%'))
+			and weather=#{tmp}
 		</if>
 		<if test="searchType=='yearS'">
-			sname like CONCAT('%',#{keyword},'%') or
+			(sname like CONCAT('%',#{keyword},'%') or
 			Ftype like
 			CONCAT('%',#{keyword},'%') or
-			location like CONCAT('%',#{keyword},'%')
-			and yearS=${tmp}
+			location like
+			CONCAT('%',#{keyword},'%'))
+			and yearS=#{tmp}
 		</if>
-		<if test="searchType=='location'">
-			sname like CONCAT('%',#{keyword},'%') or
+		<if test="searchType=='area'">
+			(sname like CONCAT('%',#{keyword},'%') or
 			Ftype like
 			CONCAT('%',#{keyword},'%') or
-			location like CONCAT('%',#{keyword},'%')
-			and location like CONCAT('%',#{tmp},'%')
+			location like
+			CONCAT('%',#{keyword},'%'))
+			and area = #{tmp}
 		</if>
 		<if test="searchType=='priceS'">
-			sname like CONCAT('%',#{keyword},'%') or
+			(sname like CONCAT('%',#{keyword},'%') or
 			Ftype like
 			CONCAT('%',#{keyword},'%') or
-			location like CONCAT('%',#{keyword},'%')
+			location like
+			CONCAT('%',#{keyword},'%'))
 			and priceS = #{tmp}
 		</if>
 		<if test="searchType=='lvs'">
-			sname like CONCAT('%',#{keyword},'%') or
+			(sname like CONCAT('%',#{keyword},'%') or
 			Ftype like
 			CONCAT('%',#{keyword},'%') or
-			location like CONCAT('%',#{keyword},'%')
+			location like
+			CONCAT('%',#{keyword},'%'))
 			and lvs = #{tmp}
 		</if>
 	</select>
@@ -159,4 +169,26 @@
 		select favor from user_favor where
 		sid = #{sid} and uid = #{uid};
 	</select>
+
+	<select id="listSM" resultMap="menuList">
+		select * from store_menu m,
+		ceo_store s where s.sid = m.sid and m.sid = #{sid};
+	</select>
+
+	<resultMap type="java.util.HashMap" id="menuList">
+		<result javaType="java.lang.String" column="m.sid" property="sid" />
+		<result javaType="java.lang.String" column="m.mname" property="mname" />
+		<result javaType="java.lang.String" column="m.price" property="price" />
+		<result javaType="java.lang.String" column="s.sname" property="sname" />
+	</resultMap>
+
+	<select id="listSI" resultMap="sImageList">
+		select filename from store_image where
+		sid = #{sid} limit 0,4;
+	</select>
+
+	<resultMap type="java.util.HashMap" id="sImageList">
+		<result javaType="java.lang.String" column="filename" property="filename" />
+	</resultMap>
+
 </mapper>

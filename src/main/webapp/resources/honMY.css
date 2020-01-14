@@ -1,5 +1,15 @@
 @CHARSET "UTF-8";
 
+/* 웹폰트 ON I고딕 */
+@font-face {
+	font-family: 'ON-IGothic';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
 body::-webkit-scrollbar {
 	display: none;
 }
@@ -16,17 +26,19 @@ body::-webkit-scrollbar {
 #page {
 	padding-top: 1px;
 	width: 360dp;
-	overflow: auto;
+	overflow: hidden;
 	background: silver;
 	margin-top: 40px;
 }
 
 #title {
+	background: white;
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 360px;
 	height: 40px;
+	z-index: 5;
 }
 
 #titleTXT {
@@ -121,13 +133,16 @@ body::-webkit-scrollbar {
 	float: left;
 }
 
-.imgBoxR p {
-	font-size: 0.5rem;
+.snameURL {
+	margin-top: 4px;
+	font-size: 1rem;
 	text-align: center;
+	font-weight: bold;
+	font-family: 'ON-IGothic';
 }
 
-.rContentR p {
-	font-size: 0.9375rem;
+.smallURL {
+	font-size: 0.4rem;
 }
 
 .rContentR {
@@ -150,7 +165,7 @@ body::-webkit-scrollbar {
 	float: left;
 }
 
-#removeB {
+.removeB {
 	padding: 5px;
 	float: right;
 }
@@ -219,4 +234,67 @@ body::-webkit-scrollbar {
 
 .boxS {
 	
+}
+
+/* join */
+.box {
+	margin-left: 30px;
+}
+
+.alert {
+	margin-top: 10px;
+	padding: 10px 0px 30px 10px;
+	width: 300px;
+	height: 30px;
+}
+
+.input-group {
+	width: 300px;
+}
+
+.form-control {
+	width: 300px;
+	height: 25px;
+	border-radius: 20px;
+}
+
+.form-control:FIRST-CHILD {
+	width: 235px;
+	height: 25px;
+	border-radius: 20px;
+}
+
+.btn-default {
+	font-size: 11px;
+	padding: 0px 15px 0px 15px;
+	float: left;
+	height: 25px;
+	border-radius: 20px;
+	text-align: center;
+}
+
+.terms {
+	width: 300px;
+	height: 80px;
+	padding-top: 0px;
+	margin-left: 30px;
+	background: white;
+	overflow-x: auto;
+	overflow-y: auto;
+	box-sizing: border-box;
+}
+
+.insertbox {
+	float: left;
+	text-align: center;
+	padding-top: 12.5px;
+	width: 100px;
+	height: 40px;
+	font-size: 12px;
+	background-color: white;
+}
+
+.insertbox:FIRST-CHILD {
+	margin-right: 120px;background-color: silver;
+	color: white;
 }

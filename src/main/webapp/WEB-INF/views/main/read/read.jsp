@@ -26,15 +26,25 @@
 		</div>
 		<!-- header -->
 		<div id="contentR">
-			<div id="storeImg">
-				<img src="resources/main/read/gobe1.jpg"> <img
-					src="resources/main/read/gobe2.jpg"> <img
-					src="resources/main/read/gobe3.jpg"> <img
-					src="resources/main/read/gobe4.jpg">
+			<div id="storeImg"></div>
+			<!-- content  -->
+			<script id="temp" type="text/x-handlebars-template">
+		{{#each .}}
+				<img src="{{filename}}">
+		{{/each}}
 				<div id="imgMenu">
-					<div id="menuTXT">메뉴</div>
+					<div id="menuTXT" onClick=>메뉴</div>
 				</div>
-			</div>
+		</script>
+			<!-- 			<div id="storeImg"> -->
+			<!-- 				<img src="resources/main/read/gobe1.jpg"> <img -->
+			<!-- 					src="resources/main/read/gobe2.jpg"> <img -->
+			<!-- 					src="resources/main/read/gobe3.jpg"> <img -->
+			<!-- 					src="resources/main/read/gobe4.jpg"> -->
+			<!-- 				<div id="imgMenu"> -->
+			<!-- 					<div id="menuTXT" onClick=>메뉴</div> -->
+			<!-- 				</div> -->
+			<!-- 			</div> -->
 			<div id="storeInfo">
 				<span id="storeName">${vo.sname }</span> <span
 					class="glyphicon glyphicon-pencil" aria-hidden="true"
@@ -118,6 +128,8 @@
 	var sid = "${vo.sid}";
 	var uid = "${uid}";
 	var favor = 0;
+	var toggle = 0;
+
 	// 마우스 스크롤 이벤트
 	$("#contentR").on('mousewheel DOMMouseScroll', function(e) {
 		// html, body 에 마우스 휠 이벤트와 돔마우스스크롤 이벤트를 걸었습니다.
@@ -178,17 +190,12 @@
 		}
 	});
 
-	$("#storeImg").on("click", function() {
-		$("#dPage").show();
-	});
+	$("#storeImg img").on("click", function() {
 
-	$("#imgMenu").on("click", function(e) {
-		e.stopPropagation();
-		alert("메뉴");
 	});
 
 	$("#btnRV").on("click", function() {
-		location.href = "RV";
+		location.href = "RV?sid=" + sid;
 	});
 </script>
 <!-- 팝업 -->
@@ -355,7 +362,6 @@
 					success : function() {
 						$("#iconFavor").css("color", "red");
 						favor = 1;
-						alert(favor);
 					}
 				});
 				break;
@@ -372,7 +378,6 @@
 					},
 					success : function() {
 						$("#iconFavor").css("color", "red");
-						alert(favor);
 					}
 				});
 				break;
@@ -389,7 +394,6 @@
 					},
 					success : function() {
 						$("#iconFavor").css("color", "black");
-						alert(favor);
 					}
 				});
 				break;
@@ -437,5 +441,33 @@
 			return;
 		}
 	});
+
+	getImage();
+
+	function getImage() {
+		$.ajax({
+			url : "listSI.json",
+			type : "get",
+			data : {
+				"sid" : sid
+			},
+			success : function(data) {
+				var temp = Handlebars.compile($("#temp").html());
+				$("#storeImg").html(temp(data));
+
+				$("#storeImg img").on("click", function() {
+					$("#imgB img").show();
+					var imgB = $(this).attr("src");
+					$("#imgB img").attr("src", imgB);
+					$("#dPage").show();
+				})
+
+				$("#imgMenu").on("click", function(e) {
+					$("#imgB img").hide();
+					$("#dPage").show();
+				});
+			}
+		});
+	}
 </script>
 </html>

@@ -107,6 +107,7 @@ public class HonController {
 	@RequestMapping("read")
 	public String mRead(Model model, String sid) throws Exception {
 		model.addAttribute("vo", sdao.readS(sid));
+		model.addAttribute("SM", sdao.listSM(sid));
 		return "main/read/read";
 	}
 
@@ -116,8 +117,14 @@ public class HonController {
 	}
 
 	@ResponseBody
+	@RequestMapping(value = "listSI.json")
+	public List<String> listSIJson(String sid) throws Exception {
+		return sdao.listSI(sid);
+	}
+
+	@ResponseBody
 	@RequestMapping(value = "rService")
-	public String replyUPost(ReplyVO vo) throws Exception {
+	public String replyU(ReplyVO vo) throws Exception {
 		rService.insertRp(vo);
 		return "1";
 	}
@@ -153,8 +160,8 @@ public class HonController {
 
 	@ResponseBody
 	@RequestMapping("userFU")
-	public void userFU(String uid, int favor) throws Exception {
-		udao.userFU(uid, favor);
+	public void userFU(String uid, String sid, int favor) throws Exception {
+		udao.userFU(uid, sid, favor);
 	}
 
 	// blog °Ë»ö
@@ -189,7 +196,8 @@ public class HonController {
 	}
 
 	@RequestMapping("RV")
-	public String mRV() {
+	public String mRV(Model model, String sid) throws Exception {
+		model.addAttribute("SM", sdao.listSM(sid));
 		return "main/read/RV/RV";
 	}
 }

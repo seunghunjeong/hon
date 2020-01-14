@@ -39,10 +39,11 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void userFU(String uid, int favor) throws Exception {
+	public void userFU(String uid, String sid, int favor) throws Exception {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("uid", uid);
+		map.put("sid", sid);
 		map.put("favor", favor);
 		session.update(namespace + ".userFU", map);
 	}
@@ -51,5 +52,44 @@ public class UserDAOImpl implements UserDAO {
 	public List<Map<String, Object>> listUFL(String uid) {
 		// TODO Auto-generated method stub
 		return session.selectList(namespace + ".listUFL", uid);
+	}
+
+	@Override
+	public List<Map<String, Object>> listURL(String uid) {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace + ".listURL", uid);
+	}
+
+	@Override
+	public void deleteUR(String uid, int rid) throws Exception {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("uid", uid);
+		map.put("rid", rid);
+		session.delete(namespace + ".deleteUR", map);
+	}
+
+	@Override
+	public void joinU(UserVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		session.insert(namespace + ".joinU", vo);
+	}
+
+	@Override
+	public int idChk(String uid) throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace + ".idChk", uid);
+	}
+
+	@Override
+	public int nickChk(String nick) throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace + ".nickChk", nick);
+	}
+
+	@Override
+	public void upU(UserVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		session.update(namespace + ".upU", vo);
 	}
 }

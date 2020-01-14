@@ -24,8 +24,7 @@
 			<!-- 메뉴 -->
 		</div>
 		<!-- header --> --%>
-		<div id="">
-
+		<div id="null">
 			<div id="storeReview">
 				<h5 id="Rps0">리뷰 ${RpsTOT }</h5>
 				<div class="reviewRps"></div>

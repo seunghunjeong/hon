@@ -85,4 +85,16 @@ public class StoreDAOImpl implements StoreDAO {
 		map.put("sid", sid);
 		return session.selectOne(namespace + ".FChk", map);
 	}
+
+	@Override
+	public List<Map<String, Object>> listSM(String sid) throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace + ".listSM", sid);
+	}
+
+	@Override
+	public List<String> listSI(String sid) throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace + ".listSI", sid);
+	}
 }

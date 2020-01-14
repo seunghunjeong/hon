@@ -18,46 +18,21 @@
 				<script>
 					$("#navF").css('width', '780px');
 				</script>
+				<div class="favorUFL"></div>
+				<script id="tempUFL" type="text/x-handlebars-template">
+				{{#each .}}
+					<div class="favor">
+						<a href="read?sid={{sid}}"><img src="{{simage}}" class="img-circle" width="60px" height="60px"></a>
+						<br> <small>{{sname}}</small>
+					</div>	
+				{{/each}}
 				<div class="favor">
-					<img src="http://placehold.it/60x60" alt="favor" class="img-circle">
-					<br> <small>음식점 이름</small> <br> 안녕
+					<img id="MoreImg" src="resources/main/read/imgMore.png" alt="more" class="img-circle" width="60px" onClick="location.href='bookMark'">
 				</div>
-				<div class="favor">
-					<img src="http://placehold.it/60x60" alt="favor" class="img-circle">
-					<br> <small>음식점 이름</small>
-				</div>
-				<div class="favor">
-					<img src="http://placehold.it/60x60" alt="favor" class="img-circle">
-					<br> <small>음식점 이름</small>
-				</div>
-				<div class="favor">
-					<img src="http://placehold.it/60x60" alt="favor" class="img-circle">
-					<br> <small>음식점 이름</small>
-				</div>
-				<div class="favor">
-					<img src="http://placehold.it/60x60" alt="favor" class="img-circle">
-					<br> <small>음식점 이름</small>
-				</div>
-				<div class="favor">
-					<img src="http://placehold.it/60x60" alt="favor" class="img-circle">
-					<br> <small>음식점 이름</small>
-				</div>
-				<div class="favor">
-					<img src="http://placehold.it/60x60" alt="favor" class="img-circle">
-					<br> <small>음식점 이름</small>
-				</div>
-				<div class="favor">
-					<img src="http://placehold.it/60x60" alt="favor" class="img-circle">
-					<br> <small>음식점 이름</small>
-				</div>
-				<div class="favor">
-					<img src="http://placehold.it/60x60" alt="favor" class="img-circle">
-					<br> <small>음식점 이름</small>
-				</div>
-				<div class="favor">
-					<img src="http://placehold.it/60x60" alt="favor" class="img-circle">
-					<br> <small>음식점 이름</small>
-				</div>
+				</script>
+				<!-- 				<img src="http://placehold.it/60x60" alt="favor" class="img-circle"> -->
+				<!-- 					<br> <small>음식점 이름</small> -->
+
 			</c:if>
 			<c:if test="${uid == null}">
 				<script>
@@ -73,6 +48,8 @@
 	<!-- nav -->
 </body>
 <script>
+	var uid = "${uid}";
+
 	// 스크롤 상하를 좌우로 바꾸기
 
 	$("#nav").on('mousewheel', function(e) {
@@ -94,5 +71,32 @@
 		}
 
 	});
+
+	getlistUFL();
+	function getlistUFL() {
+		$.ajax({
+			url : "listUFL.json",
+			type : "get",
+			data : {
+				"uid" : uid
+			},
+			success : function(data) {
+				var temp = Handlebars.compile($("#tempUFL").html());
+				$(".favorUFL").html(temp(data));
+				if (data.length == 0) {
+					$(".favor").html("마음에 드는 음식점을 즐겨찾기해보세요.");
+					$("#nav").css("overflow", "hidden");
+					$("#MoreImg").hide();
+					return;
+				} else if (data.length < 5) {
+					$("#nav").css("overflow", "hidden");
+					$("#MoreImg").hide();
+				} else {
+					$("#nav").css("overflow", "auto");
+					$("#MoreImg").show();
+				}
+			}
+		});
+	}
 </script>
 </html>

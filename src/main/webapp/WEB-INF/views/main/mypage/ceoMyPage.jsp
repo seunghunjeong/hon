@@ -40,15 +40,13 @@
 		<div id="contentMY">
 			<div id="boxV">
 				<div class="boxR">
-					<img class="imgB img-circle" src="http://placehold.it/70x70"
-						align="middle">
+					<img class="imgB" src="https://t1.daumcdn.net/cfile/tistory/99D3F2375A8A835A2F" align="middle" width="70px" height="70px">
 					<div class="txtB">
-						규카츠 외 <br> <small>1000원<br> 잠만보 | 010-0000-0000
-							<br>2019.12.24
+						<b>혼끼</b> <br> <small>29000원<br> 인천시 남동구 구월동 1463 |
+							010-000-0000 <br>2020.01.17
 						</small>
 					</div>
-					<span id="removeB" class="glyphicon glyphicon-remove"
-						aria-hidden="true"></span>
+					<span class="removeB glyphicon glyphicon-remove" aria-hidden="true"></span>
 				</div>
 			</div>
 			<div id="notice" class="boxM">

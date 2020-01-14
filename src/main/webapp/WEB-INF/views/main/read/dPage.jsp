@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,14 +18,27 @@
 <body>
 	<div id="dPage">
 		<div id="dBox">
-			<div id="nameB">구월동 고베 규카츠</div>
+			<div id="nameB">${vo.sname }</div>
 			<div id="close">
 				<span id="x" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 			</div>
 		</div>
 		<div id="imgBox">
 			<div id="imgB">
-				<img src="resources/main/read/gobe1.jpg">
+				<img src="">
+				<div id="menuInfo">
+					<h5>
+						<b>메뉴</b>
+					</h5>
+					<ul>
+						<c:forEach var="SM" items="${SM }">
+							<li>
+								<p class="l-txt">${SM.mname }</p>
+								<p class="r-txt">${SM.price }</p>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -35,4 +35,10 @@ public class DBTest {
 		
 		sdao.FChk(sid, uid);
 	}
+	
+	@Test
+	public void test1() throws Exception{
+		String uid = "user00";
+		udao.listURL(uid);
+	}
 }

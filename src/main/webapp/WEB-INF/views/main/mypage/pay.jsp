@@ -19,42 +19,27 @@
 <body>
 	<div id="page">
 		<div id="title">
-			<a href="mainPage"><img id="logo"
-				src="resources/main/logo2.png" width=40></a> <span id="titleTXT">결제내역</span>
+			<a href="mainPage"><img id="logo" src="resources/main/logo2.png"
+				width=40></a> <span id="titleTXT">결제내역</span>
 		</div>
 		<div id="contentU">
 			<div class="boxB">
-				<img class="imgB" src="http://placehold.it/70x70" class="img-rounded"
-					align="middle"> <div class="txtB">구월동 고베 규카츠 <br> <small>1000원<br>
-						인천시 구월동 | 032-0000-0000 <br>2019.12.24
-				</small></div><span id="removeB" class="glyphicon glyphicon-remove"
+				<img class="imgB" src="https://t1.daumcdn.net/cfile/tistory/99D3F2375A8A835A2F"
+					class="img-rounded" align="middle" width="70px" height="70px">
+				<div class="txtB">
+					구월동 고베 규카츠 <br> <small>29000원<br> 인천시 남동구 구월동
+						1463 | 032-508-0555 <br>2020.01.17
+					</small>
+				</div>
+				<span id="removeB" class="glyphicon glyphicon-remove"
 					aria-hidden="true"></span>
 			</div>
-			<div class="boxB">
-				<img class="imgB" src="http://placehold.it/70x70" class="img-rounded"
-					align="middle"> <div class="txtB">구월동 고베 규카츠 <br> <small>★★★☆☆<br>
-						인천시 구월동 | 032-0000-0000 <br>고기 요리
-				</small></div><span id="removeB" class="glyphicon glyphicon-remove"
-					aria-hidden="true"></span>
-			</div>
-			<div class="boxB">
-				<img class="imgB" src="http://placehold.it/70x70" class="img-rounded"
-					align="middle"> <div class="txtB">구월동 고베 규카츠 <br> <small>★★★☆☆<br>
-						인천시 구월동 | 032-0000-0000 <br>고기 요리
-				</small></div><span id="removeB" class="glyphicon glyphicon-remove"
-					aria-hidden="true"></span>
-			</div>
-			<div class="boxB">
-				<img class="imgB" src="http://placehold.it/70x70" class="img-rounded"
-					align="middle"> <div class="txtB">구월동 고베 규카츠 <br> <small>★★★☆☆<br>
-						인천시 구월동 | 032-0000-0000 <br>고기 요리
-				</small></div><span id="removeB" class="glyphicon glyphicon-remove"
-					aria-hidden="true"></span>
-			</div>			
 		</div>
 	</div>
 </body>
 <script>
+	$("#")
+
 	$("#removeB").on("click", function() {
 		alert("삭제");
 	});

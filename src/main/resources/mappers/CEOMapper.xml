@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper  namespace="CEOMapper">
+<mapper namespace="CEOMapper">
 	<select id="clogin" resultType="com.example.domain.CEOVO">
-		select * from hon_joinc where cid=#{cid} and cpw=#{cpw}
+		select * from hon_joinc where
+		cid=#{cid} and cpw=#{cpw}
 	</select>
+
+	<update id="updateS">
+		update ceo_store set sname = #{sname} and location =
+		#{location} and
+		phone = #{phone} and simage =#{simage} and OpeningT =
+		#{OpeningT} and RestT = #{RestT} and website
+		= #{website} and RestD =
+		#{RestD} and info = #{info} where
+		sid = #{sid};
+	</update>
 </mapper>

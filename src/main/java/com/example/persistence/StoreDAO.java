@@ -27,4 +27,8 @@ public interface StoreDAO {
 	public int listRpsTOT(String sid) throws Exception;
 
 	public String FChk(String sid, String uid) throws Exception;
+	
+	public List<String> listSI(String sid) throws Exception;
+	
+	public List<Map<String, Object>> listSM(String sid) throws Exception;
 }

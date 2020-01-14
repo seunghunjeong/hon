@@ -36,11 +36,9 @@
 		<div id="TXT"><h3>오늘의 추천 맛집</h3></div>
 		{{#each .}}
 			<div class="thumb thumbnail" onClick="location.href='read?sid={{sid}}'">
-				<img src="{{simage}}" class="img-thumbnail" width=100%  min-height=75>
+				<img src="{{simage}}" class="imgTh img-thumbnail">
 				<div class="caption">
-					<h6>
-						{{sname}} <br><small>평점 ★★★★☆</small>
-					</h6>
+					<h6 style="line-height:170%"><b>{{sname}}</b><br><small>{{location}}</small></h6>
 				</div>
 			</div>
 		{{/each}}
@@ -55,10 +53,10 @@
 				</div>
 			</div> -->
 	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 	<!-- page -->
 </body>
 <script>
-
 	getListS();
 	function getListS() {
 		$.ajax({
@@ -67,6 +65,9 @@
 			success : function(data) {
 				var temp = Handlebars.compile($("#temp").html());
 				$("#content").html(temp(data));
+
+				$(".imgTh").css("width", "100px");
+				$(".imgTh").css("height", "80px");
 			}
 		});
 	}

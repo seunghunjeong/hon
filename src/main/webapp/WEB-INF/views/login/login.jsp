@@ -80,7 +80,7 @@
 
 		<br> <br>
 		<div style="font-size: 14px;">
-			혼자한끼가 처음이신가요? <a href="user_login" class="log_a1">회원가입</a>
+			혼자한끼가 처음이신가요? <a href="join" class="log_a1">회원가입</a>
 		</div>
 		<br><br><br><br><br><br><br><br><br><br><br>
 		<hr>
