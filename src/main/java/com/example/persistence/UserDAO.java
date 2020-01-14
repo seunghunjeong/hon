@@ -20,12 +20,14 @@ public interface UserDAO {
 	public List<Map<String, Object>> listURL(String uid) throws Exception;
 
 	public void deleteUR(String uid, int rid) throws Exception;
-	
+
 	public void joinU(UserVO vo) throws Exception;
-	
+
 	public int idChk(String uid) throws Exception;
-	
+
 	public int nickChk(String nick) throws Exception;
-	
+
 	public void upU(UserVO vo) throws Exception;
+
+	public void delU(String uid) throws Exception;
 }

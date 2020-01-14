@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,6 +46,16 @@ public class HonMyController {
 	public String mUpU(UserVO vo) throws Exception {
 		udao.upU(vo);
 		return "redirect:myPage";
+	}
+
+	// Å»Åð
+
+	@RequestMapping("delU")
+	public String mDelU(String uid, HttpSession session) throws Exception {
+		udao.delU(uid);
+		session.removeAttribute("uid");
+		session.removeAttribute("cid");
+		return "redirect:mainPage";
 	}
 
 	// À¯Àú Áñ°ÜÃ£±â ¸®½ºÆ®

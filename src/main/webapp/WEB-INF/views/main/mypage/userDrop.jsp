@@ -20,11 +20,11 @@
 	<div id="page">
 		<div id="title">
 			<a href="mainPage"><img id="logo"
-				src="../resources/main/logo2.png" width=40></a> <span
+				src="resources/main/logo2.png" width=40></a> <span
 				id="titleTXT">회원 탈퇴</span>
 		</div>
 		<div id="contentU">
-			<div id="termsDR">어쩌고저쩌고 탈퇴할거임?</div>
+			<div id="termsDR">탈퇴하십니까?</div>
 			<div id="agreeDR">
 				<div id="drL">
 					<input type="radio" name="agU">동의

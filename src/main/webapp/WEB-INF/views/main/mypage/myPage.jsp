@@ -104,7 +104,8 @@
 	});
 
 	$("#userDrop").on("click", function() {
-		location.href = "userDrop";
+		var uid = "${user.uid}";
+		location.href = "delU?uid=" + uid;
 	});
 </script>
 </html>

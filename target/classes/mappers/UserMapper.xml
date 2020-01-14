@@ -97,4 +97,8 @@
 		where uid
 		= #{uid}
 	</update>
+
+	<delete id="delU">
+		delete from hon_joinU where uid =#{uid}
+	</delete>
 </mapper>
