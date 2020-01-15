@@ -98,4 +98,24 @@ public class UserDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		session.delete(namespace + ".delU", uid);
 	}
+
+	@Override
+	public void insertU(UserVO vo) throws Exception {
+		session.insert(namespace + ".insertU", vo);
+	}
+
+	@Override
+	public void deleteU(String uid) throws Exception {
+		session.delete(namespace + ".deleteU", uid);
+	}
+
+	@Override
+	public List<UserVO> listU() throws Exception {
+		return session.selectList(namespace + ".listU");
+	}
+
+	@Override
+	public UserVO readU(String uid) throws Exception {
+		return session.selectOne(namespace + ".readU", uid);
+	}
 }

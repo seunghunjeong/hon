@@ -22,14 +22,23 @@
 		<!-- /input-group -->
 
 		<c:if test="${uid != null}">
-<!-- 			 <button onClick="location.href='logout'" class="btn btn-primary" -->
-<!-- 				id="login">로그아웃</button> -->
-			<a href="myPage"><img id="login" src="${user.image}" width="35px" class="img-circle"></a>
+			<!-- 			 <button onClick="location.href='logout'" class="btn btn-primary" -->
+			<!-- 				id="login">로그아웃</button> -->
+			<a href="myPage"><img id="login" src="${user.image}" width="35px"
+				class="img-circle"></a>
 			<!-- 썸네일로 바꾸기 -->
 		</c:if>
 		<c:if test="${uid == null}">
 			<button id="login" type="button" class="btn btn-primary"
 				onClick="location.href='login'">로그인</button>
+		</c:if>
+		<c:if test="${param.email != null }">
+			<a href="myPage"><img id="login1"
+				style="float: right; margin: 2px;" src="http://placehold.it/35x35"
+				width="35px" class="img-circle"></a>
+			<script>
+				$("#login").hide();
+			</script>
 		</c:if>
 		<!-- 로그인 -->
 	</div>

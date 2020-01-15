@@ -101,4 +101,23 @@
 	<delete id="delU">
 		delete from hon_joinU where uid =#{uid}
 	</delete>
+
+
+	<insert id="insertU">
+		insert into hon_joinu(permit, uid, upw, nick, location, gender, phone,
+		email, image, birthday)
+		values(#{permit},#{uid} ,#{upw}, #{nick}, #{location}, #{gender}, #{phone}, #{email},
+		#{image}, #{birthday})
+	</insert>
+	<delete id="deleteU">
+		delete from hon_joinu where uid=#{uid}
+	</delete>
+	<select id="listU" resultType="com.example.domain.UserVO">
+		select * from hon_joinu
+	</select>
+	<select id="readU" resultType="com.example.domain.UserVO">
+		select * from hon_joinu where
+		uid=#{uid}
+	</select>
+
 </mapper>

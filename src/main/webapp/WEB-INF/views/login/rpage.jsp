@@ -14,7 +14,7 @@
 * {
 	padding: 0;
 	margin: 0;
-	position: relative;	
+	position: relative;
 	box-sizing: border-box;
 }
 
@@ -141,7 +141,39 @@ body, html {
 	margin: 0;
 	cursor: pointer;
 }
+
+.frm {
+	display: none;
+	position: absolute;
+	left: 5px;
+	top: 110px;
+}
+
+.frm1 {
+	right: 5px;
+	display: none;
+	position: absolute;
+	top: 110px;
+}
 </style>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.first').click(function() {
+			$('.frm').fadeToggle();
+			$('.frm1').fadeOut();
+		});
+	});
+
+	$(document).ready(function() {
+		$('.second').click(function() {
+			$('.frm1').fadeToggle();
+			$('.frm').fadeOut();
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="wrap">
@@ -149,24 +181,134 @@ body, html {
 		<h1>root</h1>
 		<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> </header>
 		<section class="section section1"> <span
-			class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> </section>
+			class="glyphicon glyphicon-share-alt" aria-hidden="true"
+			onClick="location.href='mainPage'"></span> </section>
 		<section class="section section2">
-		<p>AD</p>
+		<p>
+			<a
+				href="https://ssl.pstatic.net/tveta/libs/1261/1261679/98a2345c67c8a7ed8975_20200108132030439.jpg"></a>
+		</p>
 		</section>
 		<section class="section section3">
 		<div class="user">
-			<div>
+			<div class="first" onClick="showHide();">
 				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			</div>
 			<p>User</p>
+			<form class="frm">
+				<table id="tbl" width=300></table>
+				<script id="temp" type="text/x-handlebars-template">
+					<tr class="row">
+						<td>회원ID</td>
+						<td>성별</td>
+						<td>삭제</td>
+					</tr>
+					{{#each .}}
+						<tr class="row">
+							<td>{{uid}}</td>
+							<td>{{gender}}</td>
+							<td><button class="delete" uid="{{uid}}">삭제</button></td>
+						</tr>
+					{{/each}}
+				</script>
+			</form>
 		</div>
+
 		<div class="ceo">
-			<div>
+			<div class="second">
 				<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 			</div>
 			<p>CEO</p>
+			<form class="frm1">
+				<table id="tbl1" width=300></table>
+				<script id="temp1" type="text/x-handlebars-template">
+						<tr class="row1">
+							<td>사장ID</td>
+							<td>가게이름</td>
+							<td>삭제</td>
+						</tr>
+						{{#each .}}
+							<tr class="row1">
+								<td>{{sid}}</td>
+								<td><a href="menu2?sid={{sid}}">{{sname}}</a></td>
+								<td><button class="delete" sid="{{sid}}">삭제</button></td>
+							</tr>
+						{{/each}}
+					</script>
+			</form>
 		</div>
 		</section>
 	</div>
 </body>
+<script>
+	var sid;
+	var uid;
+	getList();
+	function getList() {
+		$.ajax({
+			type : "get",
+			url : "listU.json",
+			data : {
+				"uid" : uid
+			},
+			success : function(data) {
+				var temp = Handlebars.compile($("#temp").html());
+				$("#tbl").html(temp(data));
+			}
+		});
+	}
+
+	$("#tbl").on("click", ".row .delete", function() {
+		if (confirm("삭제하시겠습니까?")) {
+			var uid = $(this).attr("uid");
+			$.ajax({
+				type : "post",
+				url : "delU",
+				data : {
+					"uid" : uid
+				},
+				success : function() {
+					alert("삭제되었습니다.");
+					getList();
+				},
+				error : function() {
+					alert("삭제를 실패했습니다.");
+				}
+			});
+		}
+	});
+	getList1();
+	function getList1() {
+		$.ajax({
+			type : "get",
+			url : "listRS.json",
+			data : {
+				"sid" : sid
+			},
+			success : function(data) {
+				var temp = Handlebars.compile($("#temp1").html());
+				$("#tbl1").html(temp(data));
+			}
+		});
+	}
+	$("#tbl1").on("click", ".row1 .delete", function() {
+		if (confirm("삭제하시겠습니까?")) {
+			var sid = $(this).attr("sid");
+			$.ajax({
+				type : "post",
+				url : "deleteS",
+				data : {
+					"sid" : sid
+				},
+				success : function() {
+					alert("삭제되었습니다.");
+					getList1();
+				},
+				error : function() {
+					alert("삭제를 실패했습니다.");
+				}
+			});
+		}
+	});
+</script>
 </html>

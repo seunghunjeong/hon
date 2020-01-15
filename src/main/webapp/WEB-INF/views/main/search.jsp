@@ -104,8 +104,7 @@
 	getSearchS();
 
 	function getSearchS() {
-		$
-				.ajax({
+		$.ajax({
 					type : "get",
 					url : "searchS.json",
 					data : {

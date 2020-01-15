@@ -101,8 +101,8 @@
 </body>
 <script type="text/javascript">
 	//네이버로그인
-	var naver_id_login = new naver_id_login("HkqgEgUzLEOP5p0IrNMh",
-			"http://localhost:8088/web/naverLogin");
+	var naver_id_login = new naver_id_login("Uxl46jC3jMf2g1tg8wYq",
+			"http://192.168.0.39:8088/web/naverLogin");
 	var state = naver_id_login.getUniqState();
 	naver_id_login.setButton("white", 3, 40);
 	naver_id_login.setDomain("YOUR_SERVICE_URL");

@@ -42,7 +42,7 @@
 					</div>
 					{{/each}}
 				</script>
-				<div id="moreR">더보기</div>
+				<div id="moreR"></div>
 			</div>
 			<div id="storeBlog"><jsp:include page="blog.jsp"></jsp:include></div>
 			<div id="storeRecom"><jsp:include page="storeR.jsp"></jsp:include></div>
@@ -128,8 +128,13 @@
 
 				if (rps == 0) {
 					$("#Rps0").html("첫 리뷰의 주인공이 되어주세요.");
-				} else if (data.length == 0)
+				} else if (data.length == 0) {
 					alert("리뷰가 없어요.");
+				}
+
+				if (rps > 3) {
+					$("#moreR").html("더보기");
+				}
 			}
 		});
 	}

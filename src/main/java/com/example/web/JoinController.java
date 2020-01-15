@@ -1,5 +1,7 @@
 package com.example.web;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.CEOVO;
+import com.example.domain.MenuVO;
 import com.example.domain.StoreVO;
 import com.example.domain.UserVO;
 import com.example.persistence.CEODAO;
@@ -19,39 +22,29 @@ import com.example.persistence.UserDAO;
 @Controller
 public class JoinController {
 
+	@Inject
+	StoreDAO sdao;
+
+	@Inject
+	UserDAO dao;
+
+	@Inject
+	CEODAO cdao;
+
 	// 리스트
 	@RequestMapping("list")
 	public String list(String email, HttpSession session) {
 		if (email != null) {
 			session.setAttribute("uid", email);
+			session.setAttribute("user.image", "#");
 		}
-		return "login/list";
+		return "main/main";
 	}
 
 	// 로그인
 	@RequestMapping("login")
 	public String login() {
 		return "login/login";
-	}
-
-	// 관리자 페이지
-	@RequestMapping("rpage")
-	public String rpage() {
-		return "login/rpage";
-	}
-
-	@Inject
-	StoreDAO sdao;
-
-	@RequestMapping("insertS")
-	public String insertS() {
-		return "insertS";
-	}
-
-	@RequestMapping(value = "insertS", method = RequestMethod.POST)
-	public String insertSPost(StoreVO vo) throws Exception {
-		sdao.insert(vo);
-		return "redirect:mainPage";
 	}
 
 	// 사장 페이지
@@ -71,12 +64,6 @@ public class JoinController {
 	public String findPw() {
 		return "login/findPw";
 	}
-
-	@Inject
-	UserDAO dao;
-
-	@Inject
-	CEODAO cdao;
 
 	// 로그인
 	@RequestMapping("loginPost")
@@ -148,4 +135,101 @@ public class JoinController {
 		return dao.nickChk(nick);
 	}
 
+	// 추가
+
+	@RequestMapping("insertS")
+	public String insertS(StoreVO vo) throws Exception {
+		return "main/roo/insertS";
+	}
+
+	@RequestMapping(value = "insertS", method = RequestMethod.POST)
+	public String insertSPost(StoreVO vo) throws Exception {
+		cdao.insertS(vo);
+		return "redirect:mainPage";
+	}
+
+	@RequestMapping(value = "deleteS", method = RequestMethod.POST)
+	public @ResponseBody void delete(String sid) {
+		try {
+			cdao.deleteS(sid);
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+	}
+
+	@RequestMapping("rpage")
+	public String rpage(Model model, String sid) throws Exception {
+		model.addAttribute("csvo", cdao.readS(sid));
+		return "login/rpage";
+	}
+
+	@ResponseBody
+	@RequestMapping("listU.json")
+	public List<UserVO> listU() throws Exception {
+		List<UserVO> list = dao.listU();
+		return list;
+	}
+
+	@RequestMapping(value = "insertU", method = RequestMethod.POST)
+	public String insertUPost(UserVO vo) throws Exception {
+		dao.insertU(vo);
+		return "redirect:mainPage";
+	}
+
+	@RequestMapping(value = "deleteU", method = RequestMethod.POST)
+	public @ResponseBody void deleteU(String uid) {
+		try {
+			dao.deleteU(uid);
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+	}
+
+	@RequestMapping("menu")
+	public String menu(Model model, String sid) throws Exception {
+		return "main/roo/menu";
+	}
+	
+	@RequestMapping("menu2")
+	public String menu2(Model model, String sid) throws Exception {
+		model.addAttribute("mvo", cdao.readM(sid));
+		return "main/roo/menu2";
+	}
+
+
+	@ResponseBody
+	@RequestMapping("listRS.json")
+	public List<StoreVO> listS() throws Exception {
+		List<StoreVO> list = cdao.listS();
+		return list;
+	}
+
+	@ResponseBody
+	@RequestMapping("listM.json")
+	public List<MenuVO> listM(String sid) throws Exception {
+		return cdao.listM(sid);
+	}
+
+	@RequestMapping("insertM")
+	public String insertM(MenuVO mvo) throws Exception {
+		return "main/roo/insertM";
+	}
+
+	@RequestMapping(value = "insertM", method = RequestMethod.POST)
+	public String insertMPost(MenuVO mvo) throws Exception {
+		cdao.insertM(mvo);
+		return "redirect:menu";
+	}
+
+	@RequestMapping(value = "deleteM", method = RequestMethod.POST)
+	public @ResponseBody void deleteM(String sid, int mcount) {
+		try {
+			cdao.deleteM(sid, mcount);
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+	}
 }

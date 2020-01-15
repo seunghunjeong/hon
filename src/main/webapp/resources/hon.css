@@ -41,15 +41,29 @@ body::-webkit-scrollbar {
 	display: none;
 }
 
+a:link {
+	color: black;
+	text-decoration: none;
+}
+
+a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 /* main */
 #page {
 	margin-top: 40px;
 	width: 100%;
-	background-image: url("main/bg1.png");
 	min-height: 100%;
 	background-position: center;
 	background-size: cover;
 	overflow: hidden;
+	background-image: url("main/bg1.png");
 }
 
 #header {
@@ -366,7 +380,7 @@ body::-webkit-scrollbar {
 }
 
 /* read2 */
-#null{
+#null {
 	margin-top: -10px;
 }
 
@@ -419,8 +433,10 @@ body::-webkit-scrollbar {
 }
 
 #storeBlog {
+	clear: both;
 	height: 130px;
 	margin-top: 10px;
+	height: 130px;
 }
 
 #storeBlog tr {

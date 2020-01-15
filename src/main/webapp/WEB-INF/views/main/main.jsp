@@ -22,7 +22,6 @@
 <body>
 	<div id="page">
 		<div id="header">
-
 			<jsp:include page="menu.jsp"></jsp:include>
 			<!-- 메뉴 -->
 			<div id="title">

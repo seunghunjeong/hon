@@ -16,4 +16,47 @@
 		#{RestD} and info = #{info} where
 		sid = #{sid};
 	</update>
+
+	<insert id="insertRS">
+		insert into CEO_store(sid, sname, location, phone,
+		simage, weather, yearS,
+		lvs, priceS, OpeningT ,restT, website, Ftype,
+		RestD, info)
+		values(#{sid},#{sname} ,#{location}, #{phone},
+		#{simage},#{weather},#{yearS},
+		#{lvs}, #{priceS},#{OpeningT},
+		#{restT},#{website},#{Ftype},#{RestD},
+		#{info});
+	</insert>
+	<delete id="deleteRS">
+		delete from CEO_store where sid=#{sid}
+	</delete>
+	<select id="listRS" resultType="com.example.domain.StoreVO">
+		select * from CEO_store
+	</select>
+	<select id="readRS" resultType="com.example.domain.StoreVO">
+		select * from CEO_store where
+		sid=#{sid}
+	</select>
+
+	<!-- 스토어메뉴 -->
+	<insert id="insertM">
+		insert into store_menu(sid, mcount, mname, mimage,
+		price, special)
+		values(#{sid}, #{mcount}, #{mname}, #{mimage},
+		#{price}, #{special})
+	</insert>
+	<delete id="deleteM">
+		delete from store_menu where sid=#{sid} and
+		mcount=#{mcount}
+	</delete>
+	<select id="listM" resultType="com.example.domain.MenuVO">
+		select * from store_menu
+	</select>
+	<select id="readM" resultType="com.example.domain.MenuVO">
+		select * from store_menu where
+		sid=#{sid}
+	</select>
+
 </mapper>
+

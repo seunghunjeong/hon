@@ -30,4 +30,13 @@ public interface UserDAO {
 	public void upU(UserVO vo) throws Exception;
 
 	public void delU(String uid) throws Exception;
+
+	//
+	public void insertU(UserVO vo) throws Exception;
+
+	public void deleteU(String uid) throws Exception;
+
+	public List<UserVO> listU() throws Exception;
+
+	public UserVO readU(String uid) throws Exception;
 }

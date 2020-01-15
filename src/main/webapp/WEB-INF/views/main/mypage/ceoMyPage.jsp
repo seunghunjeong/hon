@@ -19,9 +19,8 @@
 <body>
 	<div id="page">
 		<div id="title">
-			<a href="mainPage"><img id="logo"
-				src="resources/main/logo2.png" width=40></a> <span
-				id="titleTXT">마이혼끼</span>
+			<a href="mainPage"><img id="logo" src="resources/main/logo2.png"
+				width=40></a> <span id="titleTXT">마이혼끼</span>
 		</div>
 		<div id="info">
 			<img src="http://placehold.it/60x60" alt="favor" class="img-circle"
@@ -40,13 +39,16 @@
 		<div id="contentMY">
 			<div id="boxV">
 				<div class="boxR">
-					<img class="imgB" src="https://t1.daumcdn.net/cfile/tistory/99D3F2375A8A835A2F" align="middle" width="70px" height="70px">
+					<img class="imgB"
+						src="https://t1.daumcdn.net/cfile/tistory/99D3F2375A8A835A2F"
+						align="middle" width="70px" height="70px">
 					<div class="txtB">
-						<b>혼끼</b> <br> <small>29000원<br> 인천시 남동구 구월동 1463 |
-							010-000-0000 <br>2020.01.17
+						<b>혼끼</b> <br> <small>29000원<br> 인천시 남동구 구월동
+							1463 | 010-000-0000 <br>2020.01.17
 						</small>
 					</div>
-					<span class="removeB glyphicon glyphicon-remove" aria-hidden="true"></span>
+					<span id="x" class="removeB glyphicon glyphicon-remove"
+						aria-hidden="true"></span>
 				</div>
 			</div>
 			<div id="notice" class="boxM">
@@ -83,6 +85,10 @@
 
 	$("#ceoDrop").on("click", function() {
 		location.href = "ceoDrop";
+	});
+
+	$("#x").on("click", function() {
+		$("#boxV").hide();
 	});
 </script>
 </html>
