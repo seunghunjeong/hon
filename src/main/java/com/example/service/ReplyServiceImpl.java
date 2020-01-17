@@ -26,4 +26,13 @@ public class ReplyServiceImpl implements ReplyService {
 		sdao.replyS(vo);
 	}
 
+	@Override
+	public void deleteUser(String uid) throws Exception {
+		// TODO Auto-generated method stub
+		sdao.delSU(uid);
+		udao.delFU(uid);
+		udao.delUR(uid);
+		udao.deleteU(uid);
+	}
+
 }

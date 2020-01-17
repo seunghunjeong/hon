@@ -118,7 +118,7 @@ public class JoinController {
 	@RequestMapping(value = "joinU", method = RequestMethod.POST)
 	public String joinU(UserVO vo, Model model, String uid, String upw, HttpSession session) throws Exception {
 		dao.joinU(vo);
-		return loginPost(vo, null, model, uid, upw, session);
+		return "login/login";
 	}
 
 	// 아이디 확인
@@ -191,13 +191,12 @@ public class JoinController {
 	public String menu(Model model, String sid) throws Exception {
 		return "main/roo/menu";
 	}
-	
+
 	@RequestMapping("menu2")
 	public String menu2(Model model, String sid) throws Exception {
 		model.addAttribute("mvo", cdao.readM(sid));
 		return "main/roo/menu2";
 	}
-
 
 	@ResponseBody
 	@RequestMapping("listRS.json")

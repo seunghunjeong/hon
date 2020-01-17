@@ -17,8 +17,7 @@
 	<select id="listS" resultType="com.example.domain.StoreVO">
 		select * from ceo_store
 		order by
-		sid
-		DESC
+		reservation desc
 		limit 0, 9
 	</select>
 
@@ -183,12 +182,17 @@
 	</resultMap>
 
 	<select id="listSI" resultMap="sImageList">
-		select filename from store_image where
+		select filename from store_image
+		where
 		sid = #{sid} limit 0,4;
 	</select>
 
 	<resultMap type="java.util.HashMap" id="sImageList">
 		<result javaType="java.lang.String" column="filename" property="filename" />
 	</resultMap>
+	
+	<delete id="delSU">
+		delete from store_rating where uid = #{uid}	
+	</delete>
 
 </mapper>

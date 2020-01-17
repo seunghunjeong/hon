@@ -24,9 +24,9 @@
 			<div id="titleTXT">마이혼끼</div>
 		</div>
 		<div id="info">
-			<img src="http://placehold.it/60x60" alt="favor" class="img-circle"
-				align="middle"> <small>${user.nick }</small> <span
-				class="enter">></span>
+			<img src="${user.image }" alt="honkey" class="img-circle"
+				width="60px" height="60px" align="middle"> <small>${user.nick }</small>
+			<span class="enter">></span>
 		</div>
 		<div id="nav">
 			<div id="userReview" class=boxN>

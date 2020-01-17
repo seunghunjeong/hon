@@ -99,14 +99,16 @@
 	</update>
 
 	<delete id="delU">
-		delete from hon_joinU where uid =#{uid}
+		delete from hon_joinU where uid = #{uid}
 	</delete>
 
 
 	<insert id="insertU">
-		insert into hon_joinu(permit, uid, upw, nick, location, gender, phone,
+		insert into hon_joinu(permit, uid, upw, nick,
+		location, gender, phone,
 		email, image, birthday)
-		values(#{permit},#{uid} ,#{upw}, #{nick}, #{location}, #{gender}, #{phone}, #{email},
+		values(#{permit},#{uid} ,#{upw}, #{nick}, #{location}, #{gender},
+		#{phone}, #{email},
 		#{image}, #{birthday})
 	</insert>
 	<delete id="deleteU">
@@ -119,5 +121,13 @@
 		select * from hon_joinu where
 		uid=#{uid}
 	</select>
+
+	<delete id="delFU">
+		delete from user_favor where uid = #{uid}
+	</delete>
+
+	<delete id="delUR">
+		delete from user_reply where uid=#{uid}
+	</delete>
 
 </mapper>

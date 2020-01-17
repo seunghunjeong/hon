@@ -18,6 +18,7 @@ import com.example.domain.StoreVO;
 import com.example.domain.UserVO;
 import com.example.persistence.CEODAO;
 import com.example.persistence.UserDAO;
+import com.example.service.ReplyService;
 
 @Controller
 public class HonMyController {
@@ -27,6 +28,9 @@ public class HonMyController {
 
 	@Inject
 	CEODAO cdao;
+
+	@Inject
+	ReplyService service;
 
 	@RequestMapping("myPage")
 	public String mMyPage() {
@@ -52,7 +56,8 @@ public class HonMyController {
 
 	@RequestMapping("delU")
 	public String mDelU(String uid, HttpSession session) throws Exception {
-		udao.delU(uid);
+		service.deleteUser(uid);
+
 		session.removeAttribute("uid");
 		session.removeAttribute("cid");
 		return "redirect:mainPage";

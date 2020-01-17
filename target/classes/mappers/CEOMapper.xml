@@ -57,6 +57,5 @@
 		select * from store_menu where
 		sid=#{sid}
 	</select>
-
 </mapper>
 

@@ -127,6 +127,7 @@
 <script>
 	var sid = "${vo.sid}";
 	var uid = "${uid}";
+	var phone = "${vo.phone}";
 	var favor = 0;
 	var toggle = 0;
 

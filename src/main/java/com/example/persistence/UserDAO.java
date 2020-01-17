@@ -39,4 +39,8 @@ public interface UserDAO {
 	public List<UserVO> listU() throws Exception;
 
 	public UserVO readU(String uid) throws Exception;
+
+	public void delFU(String uid) throws Exception;
+	
+	public void delUR(String uid) throws Exception;
 }

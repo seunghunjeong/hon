@@ -97,4 +97,10 @@ public class StoreDAOImpl implements StoreDAO {
 		// TODO Auto-generated method stub
 		return session.selectList(namespace + ".listSI", sid);
 	}
+
+	@Override
+	public void delSU(String uid) throws Exception {
+		// TODO Auto-generated method stub
+		session.delete(namespace + ".delSU", uid);
+	}
 }

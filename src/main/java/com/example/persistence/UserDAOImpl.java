@@ -118,4 +118,16 @@ public class UserDAOImpl implements UserDAO {
 	public UserVO readU(String uid) throws Exception {
 		return session.selectOne(namespace + ".readU", uid);
 	}
+
+	@Override
+	public void delFU(String uid) throws Exception {
+		// TODO Auto-generated method stub
+		session.delete(namespace + ".delFU", uid);
+	}
+
+	@Override
+	public void delUR(String uid) throws Exception {
+		// TODO Auto-generated method stub
+		session.delete(namespace + ".delUR", uid);
+	}
 }

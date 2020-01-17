@@ -72,10 +72,7 @@
 									}
 								});
 
-						$("#btndel")
-								.on(
-										"click",
-										function() {
+						$("#btndel").on("click",function() {
 											if (!confirm("선택 메뉴를 삭제하시겠습니까?"))
 												return;
 											$("#ulm .row .chk:checked")

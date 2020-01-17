@@ -40,7 +40,7 @@
 			<div class="thumb thumbnail">
 				<a href="read?sid={{sid}}"><img src="{{simage}}"
 					alt="favor" class="imgTh img-thumbnail"></a>
-				<div class="caption">
+				<div class="caption" style="padding:2px">
 					<h6 style="line-height:170%"><b>{{sname}}</b><br><small>{{location}}</small></h6>
 				</div>
 			</div>			

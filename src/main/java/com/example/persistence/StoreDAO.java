@@ -31,4 +31,6 @@ public interface StoreDAO {
 	public List<String> listSI(String sid) throws Exception;
 	
 	public List<Map<String, Object>> listSM(String sid) throws Exception;
+	
+	public void delSU(String uid) throws Exception;
 }

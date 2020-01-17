@@ -16,8 +16,8 @@
 </body>
 
 <script>
-	$("#btnCall").on("click",function(){
-		location.href='tel:010-3666-0447'
+	$("#btnCall").on("click", function() {
+		location.href = 'tel:' + phone;
 	});
 </script>
 </html>
